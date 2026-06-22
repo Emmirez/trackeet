@@ -567,8 +567,10 @@ export const initWhatsAppClient = async (userId) => {
           "--disable-dev-shm-usage",
         ],
         headless: true,
-        executablePath:
-          "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || 
+          (process.platform === "win32" 
+            ? "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+            : "/usr/bin/google-chrome-stable"),
       },
     });
 
