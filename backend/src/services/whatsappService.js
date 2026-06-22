@@ -550,6 +550,30 @@ const handleStandardAutoReply = async (msg, userId) => {
 export const initWhatsAppClient = async (userId) => {
   if (clients.has(userId)) return clients.get(userId);
 
+  // Find Chrome executable dynamically
+  const { execSync } = await import("child_process");
+  let chromePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+  if (!chromePath && process.platform !== "win32") {
+    try {
+      chromePath = execSync(
+        "which google-chrome-stable || which google-chrome || which chromium-browser || which chromium",
+      )
+        .toString()
+        .trim();
+    } catch {
+      // Fall back to puppeteer's own installed chrome
+      try {
+        const puppeteer = await import("puppeteer");
+        chromePath = puppeteer.default.executablePath();
+      } catch {
+        chromePath = "/usr/bin/chromium";
+      }
+    }
+  } else if (!chromePath) {
+    chromePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+  }
+  console.log(`Using Chrome at: ${chromePath}`);
+
   try {
     const wwebjs = await import("whatsapp-web.js");
     const Client = wwebjs.Client || wwebjs.default?.Client;
@@ -567,10 +591,7 @@ export const initWhatsAppClient = async (userId) => {
           "--disable-dev-shm-usage",
         ],
         headless: true,
-        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || 
-          (process.platform === "win32" 
-            ? "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
-            : "/usr/bin/google-chrome-stable"),
+        executablePath: chromePath,
       },
     });
 
@@ -806,7 +827,7 @@ export const disconnectWhatsApp = async (userId) => {
     try {
       await client.destroy();
     } catch (e) {
-      console.log('Destroy error ignored:', e.message);
+      console.log("Destroy error ignored:", e.message);
     }
   }
   await WhatsAppSettings.findOneAndUpdate(
