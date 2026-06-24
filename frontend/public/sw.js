@@ -9,6 +9,9 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  // Network-first strategy — always try network, no offline caching for now
+  // Only handle same-origin requests — let cross-origin API calls pass through
+  if (!event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
   event.respondWith(fetch(event.request));
 });
