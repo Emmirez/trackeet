@@ -94,7 +94,7 @@ const SECTIONS = [
     content: [
       {
         subtitle: "Access Your Data",
-        text: "You can access all your data at any time through your Trackeet dashboard. You can also request a full export of your data by emailing privacy@trackeet.ng.",
+        text: "You can access all your data at any time through your Trackeet dashboard. You can also request a full export of your data by emailing privacy@gettrackeet.com.",
       },
       {
         subtitle: "Delete Your Data",
@@ -154,7 +154,7 @@ const SECTIONS = [
     content: [
       {
         subtitle: "Privacy Questions",
-        text: "If you have any questions about this Privacy Policy or how we handle your data, please contact us at privacy@trackeet.ng or write to us at Trackeet Technologies Ltd, Victoria Island, Lagos, Nigeria.",
+        text: "If you have any questions about this Privacy Policy or how we handle your data, please contact us at privacy@gettrackeet.com or write to us at Trackeet Technologies Ltd, Victoria Island, Lagos, Nigeria.",
       },
     ],
   },

@@ -267,7 +267,7 @@ export default function SLAPage() {
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
             <a
-              href="mailto:sales@trackeet.ng?subject=Enterprise SLA Enquiry"
+              href="mailto:sales@gettrackeet.com?subject=Enterprise SLA Enquiry"
               className="btn bg-white text-primary font-bold hover:bg-gray-50"
             >
               Contact Sales

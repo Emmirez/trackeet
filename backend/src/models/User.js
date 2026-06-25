@@ -66,7 +66,7 @@ const userSchema = new mongoose.Schema(
       ],
       default: "general",
     },
-    storeName: { type: String, unique: true, sparse: true }, // for trackeet.ng/store/storeName
+    storeName: { type: String, unique: true, sparse: true }, // for gettrackeet.com/store/storeName
     storeActive: { type: Boolean, default: true },
     storeTheme: { type: String, default: "default" },
     // Store branding
@@ -95,7 +95,11 @@ const userSchema = new mongoose.Schema(
     contactEmail: { type: String, default: null },
     contactPhones: { type: [String], default: [] },
     referralCode: { type: String, unique: true, sparse: true },
-    referredBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", default: null },
+    referredBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null,
+    },
     freeMonthsBalance: { type: Number, default: 0 },
   },
 

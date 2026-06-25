@@ -92,9 +92,9 @@ const CONTACT_METHODS = [
     icon: Mail,
     color: "bg-primary-light text-primary",
     title: "Email Us",
-    value: "hello@trackeet.ng",
+    value: "hello@gettrackeet.com",
     sub: "We reply within a few hours",
-    href: "mailto:hello@trackeet.ng",
+    href: "mailto:hello@gettrackeet.com",
   },
   {
     icon: MessageSquare,

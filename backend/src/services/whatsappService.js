@@ -200,7 +200,7 @@ const handleCommerceMessage = async (msg, userId, settings) => {
         `• Delivery address (if needed)\n` +
         `• Quantity\n\n` +
         `Or visit our store to order directly:\n` +
-        `🛍️ trackeet.ng/store/${storeName}\n\n` +
+        `🛍️ gettrackeet.com/store/${storeName}\n\n` +
         `_${bizName}_`
       );
     }
@@ -215,7 +215,7 @@ const handleCommerceMessage = async (msg, userId, settings) => {
     return (
       `Hello! 👋 Welcome to *${bizName}*! 🛍️\n\n` +
       `Browse all our products and services here:\n\n` +
-      `🔗 *trackeet.ng/store/${storeName}*\n\n` +
+      `🔗 *gettrackeet.com/store/${storeName}*\n\n` +
       `You can also ask me:\n` +
       `• *"Do you have [item]?"* — search products\n` +
       `• *"My balance"* — check what you owe\n` +
@@ -291,7 +291,7 @@ const handleCommerceMessage = async (msg, userId, settings) => {
       return (
         `Hello! 👋 Sorry, I couldn't find that in our catalogue.\n\n` +
         `🛍️ Browse all our products:\n` +
-        `trackeet.ng/store/${storeName}\n\n` +
+        `gettrackeet.com/store/${storeName}\n\n` +
         `Or describe what you're looking for and I'll help!\n\n` +
         `_${bizName}_`
       );
@@ -418,7 +418,7 @@ const handleCommerceMessage = async (msg, userId, settings) => {
       return (
         `Hello! 👋 I couldn't find any orders for your number.\n\n` +
         `If you placed an order recently, please contact us directly.\n\n` +
-        `🛍️ Shop here: trackeet.ng/store/${storeName}\n\n` +
+        `🛍️ Shop here: gettrackeet.com/store/${storeName}\n\n` +
         `_${bizName}_`
       );
     }
@@ -482,7 +482,9 @@ const handleCommerceMessage = async (msg, userId, settings) => {
       menuItems +
       exampleText +
       `\n\n` +
-      (storeName ? `🔗 *Our store:* trackeet.ng/store/${storeName}\n\n` : "") +
+      (storeName
+        ? `🔗 *Our store:* gettrackeet.com/store/${storeName}\n\n`
+        : "") +
       `_${bizName}_`
     );
   }
@@ -525,7 +527,7 @@ const handleStandardAutoReply = async (msg, userId) => {
       /\b(contact|call|phone|number|address|location|where|find you)\b/,
     )
   ) {
-    reply = `Hello! 👋 Here's how to reach us:\n\n📞 *Phone:* Available on this WhatsApp\n🌐 *Website:* trackeet.ng\n\nWe're happy to help! Feel free to send us a message anytime.\n\n_${bizName}_`;
+    reply = `Hello! 👋 Here's how to reach us:\n\n📞 *Phone:* Available on this WhatsApp\n🌐 *Website:* gettrackeet.com\n\nWe're happy to help! Feel free to send us a message anytime.\n\n_${bizName}_`;
   } else if (
     body.match(
       /\b(problem|issue|wrong|complaint|bad|error|mistake|not working|failed)\b/,
@@ -912,7 +914,7 @@ export const sendWhatsAppMessage = async ({
             ? `📝 *Notes:* ${invoice.delivery.notes}\n`
             : "")
         : "") +
-      `\nThank you for your business! 🙏\n_Powered by ${businessName} · trackeet.ng_`;
+      `\nThank you for your business! 🙏\n_Powered by ${businessName} · gettrackeet.com_`;
   } else if (type === "reminder") {
     msg =
       `Hello ${customer.name} 👋\n\n` +
@@ -920,7 +922,7 @@ export const sendWhatsAppMessage = async ({
       `📅 *Due Date:* ${invoice.dueDate ? dayjs(invoice.dueDate).format("D MMM YYYY") : "—"}\n` +
       `💰 *Balance Due:* ${fmt(invoice.balance || invoice.totalAmount)}\n\n` +
       `Please arrange payment at your earliest convenience.\n\n` +
-      `_${businessName} · trackeet.ng_`;
+      `_${businessName} · gettrackeet.com_`;
   } else if (type === "overdue") {
     msg =
       `Hello ${customer.name} 👋\n\n` +
@@ -928,13 +930,13 @@ export const sendWhatsAppMessage = async ({
       `💰 *Amount Due:* ${fmt(invoice.balance || invoice.totalAmount)}\n` +
       `📅 *Was Due:* ${invoice.dueDate ? dayjs(invoice.dueDate).format("D MMM YYYY") : "—"}\n\n` +
       `Please make payment as soon as possible to avoid any issues.\n\n` +
-      `_${businessName} · trackeet.ng_`;
+      `_${businessName} · gettrackeet.com_`;
   } else if (type === "receipt") {
     msg =
       `Hello ${customer.name} 👋\n\nPayment received! ✅\n\n` +
       `Invoice *${invoice.invoiceNumber}* has been marked as *PAID*.\n\n` +
       `💰 *Amount Paid:* ${fmt(invoice.amountPaid || invoice.totalAmount)}\n\n` +
-      `Thank you for your business! 🙏\n\n_${businessName} · trackeet.ng_`;
+      `Thank you for your business! 🙏\n\n_${businessName} · gettrackeet.com_`;
   } else if (type === "refund") {
     msg =
       `Hello ${customer.name} 👋\n\n` +
@@ -944,7 +946,7 @@ export const sendWhatsAppMessage = async ({
       `📅 *Date:* ${dayjs().format("D MMM YYYY")}\n` +
       (invoice.refundReason ? `📋 *Reason:* ${invoice.refundReason}\n` : "") +
       `\nYour refund will be processed shortly. Please contact us if you have any questions.\n\n` +
-      `_${businessName} · trackeet.ng_`;
+      `_${businessName} · gettrackeet.com_`;
   }
 
   try {

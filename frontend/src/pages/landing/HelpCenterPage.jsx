@@ -89,12 +89,12 @@ const CATEGORIES = [
       {
         title: "How does bank transfer payment work?",
         content:
-          "Select Bank Transfer on the subscription page. Transfer the exact amount to our GTBank account (Trackeet Technologies Ltd, 0123456789). Email your proof of payment to billing@trackeet.ng with your email as reference.",
+          "Select Bank Transfer on the subscription page. Transfer the exact amount to our GTBank account (Trackeet Technologies Ltd, 0123456789). Email your proof of payment to billing@gettrackeet.com with your email as reference.",
       },
       {
         title: "How to get a refund",
         content:
-          "We offer a 7-day refund policy. Email billing@trackeet.ng within 7 days of payment with your transaction reference. Refunds are processed within 3–5 business days.",
+          "We offer a 7-day refund policy. Email billing@gettrackeet.com within 7 days of payment with your transaction reference. Refunds are processed within 3–5 business days.",
       },
       {
         title: "What happens when my free plan limit is reached?",

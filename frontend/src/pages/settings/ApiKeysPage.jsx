@@ -196,7 +196,7 @@ export default function ApiKeysPage() {
         </p>
         <div className="p-3 bg-dark rounded-xl font-mono text-xs text-success overflow-x-auto">
           <p className="text-gray-400"># Example request</p>
-          <p className="mt-1">curl https://api.trackeet.ng/v1/invoices \</p>
+          <p className="mt-1">curl https://api.gettrackeet.com/v1/invoices \</p>
           <p className="ml-4">
             -H{" "}
             <span className="text-warning">"x-api-key: tsk_your_key_here"</span>

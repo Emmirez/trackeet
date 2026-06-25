@@ -171,7 +171,7 @@ function JobCard({ job }) {
             />
           </button>
           <a
-            href={`mailto:careers@trackeet.ng?subject=Application: ${job.title}`}
+            href={`mailto:careers@gettrackeet.com?subject=Application: ${job.title}`}
             className="btn btn-primary btn-sm"
           >
             Apply <ArrowRight size={14} />
@@ -205,7 +205,7 @@ function JobCard({ job }) {
             </ul>
           </div>
           <a
-            href={`mailto:careers@trackeet.ng?subject=Application: ${job.title}`}
+            href={`mailto:careers@gettrackeet.com?subject=Application: ${job.title}`}
             className="btn btn-primary w-full sm:w-auto"
           >
             Apply for this Role <ArrowRight size={16} />
@@ -372,7 +372,7 @@ export default function CareersPage() {
             tell us how you can help Trackeet grow.
           </p>
           <a
-            href="mailto:careers@trackeet.ng?subject=Open Application"
+            href="mailto:careers@gettrackeet.com?subject=Open Application"
             className="btn btn-primary btn-lg"
           >
             <Mail size={18} /> Send Open Application

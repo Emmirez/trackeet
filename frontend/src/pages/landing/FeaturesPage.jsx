@@ -100,7 +100,7 @@ const FEATURES = [
     icon: Store,
     color: "bg-purple-100 text-purple-600",
     title: "Free Online Store",
-    desc: "Every account gets a free storefront at trackeet.ng/store/yourname. Add products, share your link and customers order via WhatsApp instantly.",
+    desc: "Every account gets a free storefront at gettrackeet.com/store/yourname. Add products, share your link and customers order via WhatsApp instantly.",
     points: [
       "Your own store link instantly",
       "Add products with photos and prices",
@@ -167,7 +167,7 @@ export default function FeaturesPage() {
                 New — Free online store for every account
               </p>
               <p className="text-xs text-dark-400 mt-0.5">
-                Launch your storefront at trackeet.ng/store/yourname. Add
+                Launch your storefront at gettrackeet.com/store/yourname. Add
                 products, share your link and receive WhatsApp orders instantly.
               </p>
             </div>

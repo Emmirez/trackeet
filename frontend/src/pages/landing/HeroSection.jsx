@@ -186,7 +186,7 @@ export default function HeroSection() {
                 </div>
                 <div className="flex-1 bg-white dark:bg-gray-700 rounded-full px-3 py-0.5 text-xs text-dark-400 font-medium flex items-center gap-1">
                   <div className="w-2 h-2 bg-success rounded-full" />
-                  app.trackeet.ng
+                  app.gettrackeet.com
                 </div>
               </div>
 

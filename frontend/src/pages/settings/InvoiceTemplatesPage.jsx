@@ -97,7 +97,7 @@ export default function InvoiceTemplatesPage() {
   const handlePreview = (templateId) => {
     setPreviewing(templateId);
     const bizName = user?.businessName || "TRACKEET";
-    const bizAddr = user?.businessAddress || "trackeet.ng";
+    const bizAddr = user?.businessAddress || "gettrackeet.com";
     const doc = generatePDF(SAMPLE_INVOICE, templateId, bizName, bizAddr);
     doc.save(`preview-${templateId}.pdf`);
     setTimeout(() => setPreviewing(null), 2000);
@@ -182,7 +182,7 @@ export default function InvoiceTemplatesPage() {
                     fontSize: "7px",
                   }}
                 >
-                  trackeet.ng
+                  gettrackeet.com
                 </div>
               </div>
               <div style={{ background: "#fff", padding: "8px 10px", flex: 1 }}>

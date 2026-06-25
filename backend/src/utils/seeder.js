@@ -16,7 +16,7 @@ const seed = async () => {
     const superadmin = await User.create({
       firstName: process.env.SUPERADMIN_FIRSTNAME || "Super",
       lastName: process.env.SUPERADMIN_LASTNAME || "Admin",
-      email: process.env.SUPERADMIN_EMAIL || "superadmin@trackeet.ng",
+      email: process.env.SUPERADMIN_EMAIL || "superadmin@gettrackeet.com",
       phone: "+2340000000000",
       password: process.env.SUPERADMIN_PASSWORD || "SuperAdmin@123456",
       role: "superadmin",

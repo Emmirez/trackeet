@@ -387,7 +387,7 @@ export const sendBroadcast = asyncHandler(async (req, res) => {
                 <p style="color:#64748b;line-height:1.7;white-space:pre-wrap;">${message}</p>
               </div>
               <p style="text-align:center;color:#94a3b8;font-size:11px;margin-top:16px;">
-                © 2026 Trackeet · trackeet.ng
+                © 2026 Trackeet · gettrackeet.com
               </p>
             </div>
           `,

@@ -127,7 +127,6 @@ export default function InvoiceDetailPage() {
 
   const [showRefund, setShowRefund] = useState(false);
   const [refundReason, setRefundReason] = useState("");
-  
 
   const { data, isLoading } = useQuery({
     queryKey: ["invoice", id],
@@ -197,7 +196,7 @@ export default function InvoiceDetailPage() {
     try {
       const template = authUser?.invoiceTemplate || "classic";
       const bizName = authUser?.businessName || "TRACKEET";
-      const bizAddr = authUser?.businessAddress || "trackeet.ng";
+      const bizAddr = authUser?.businessAddress || "gettrackeet.com";
       const doc = await generatePDF(inv, template, bizName, bizAddr);
       doc.save(`${inv.invoiceNumber || "invoice"}.pdf`);
     } catch (err) {
@@ -1019,11 +1018,11 @@ export default function InvoiceDetailPage() {
         {/* Refund — show for paid or partial invoices */}
         {(isFullyPaid || isPartial) && inv.status !== "refunded" && (
           <button
-          onClick={() => setShowRefund(true)}
-          className="col-span-2 flex items-center justify-center gap-1.5 text-xs font-semibold text-danger hover:text-danger/70 transition-colors py-1"
-        >
-          <RefreshCw size={14} /> Refund Invoice
-        </button>
+            onClick={() => setShowRefund(true)}
+            className="col-span-2 flex items-center justify-center gap-1.5 text-xs font-semibold text-danger hover:text-danger/70 transition-colors py-1"
+          >
+            <RefreshCw size={14} /> Refund Invoice
+          </button>
         )}
       </div>
 

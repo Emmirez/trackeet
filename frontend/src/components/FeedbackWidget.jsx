@@ -196,7 +196,7 @@ export default function FeedbackWidget() {
                     Make public
                   </p>
                   <p className="text-xs text-dark-400">
-                    Show your review as a testimonial on trackeet.ng landing
+                    Show your review as a testimonial on gettrackeet.com landing
                     page
                   </p>
                 </div>

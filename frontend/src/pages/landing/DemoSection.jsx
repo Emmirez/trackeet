@@ -199,7 +199,7 @@ const PHONE_SCREENS = [
   <div className="w-full h-full bg-gray-50 flex flex-col">
     <div className="bg-gradient-to-r from-purple-600 to-pink-500 px-4 py-3 flex items-center justify-between">
       <div>
-        <p className="text-[9px] text-white/80">trackeet.ng/store/</p>
+        <p className="text-[9px] text-white/80">gettrackeet.com/store/</p>
         <p className="text-xs font-black text-white">Sarah's Fashion</p>
       </div>
       <div className="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center">
@@ -422,7 +422,7 @@ export default function DemoSection() {
                     </p>
                     <p className="text-[9px] text-dark-400">
                       {activeTab === 3
-                        ? "trackeet.ng/store/..."
+                        ? "gettrackeet.com/store/..."
                         : "Via WhatsApp ✅"}
                     </p>
                   </div>

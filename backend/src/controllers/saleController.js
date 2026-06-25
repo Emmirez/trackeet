@@ -238,7 +238,7 @@ export const createSale = asyncHandler(async (req, res) => {
             ? `⚠️ *Balance Due:* ${fmtN(sale.balance)}\n`
             : `✅ *Fully Paid*\n`) +
           (sale.notes ? `\n📋 *Notes:* ${sale.notes}\n` : "") +
-          `\nThank you! 🙏\n_${bizName} · trackeet.ng_`;
+          `\nThank you! 🙏\n_${bizName} · gettrackeet.com_`;
         const { sendRawWhatsAppMessage } =
           await import("../services/whatsappService.js");
         await sendRawWhatsAppMessage(req.user._id.toString(), phone, msg);
@@ -297,7 +297,7 @@ export const updateSale = asyncHandler(async (req, res) => {
           `📅 *Date:* ${dayjs().format("D MMM YYYY")}\n` +
           (refundReason ? `📋 *Reason:* ${refundReason}\n` : "") +
           `\nYour refund will be processed shortly. Please contact us if you have any questions.\n\n` +
-          `_${bizName} · trackeet.ng_`;
+          `_${bizName} · gettrackeet.com_`;
         const { sendRawWhatsAppMessage } =
           await import("../services/whatsappService.js");
         await sendRawWhatsAppMessage(
@@ -350,7 +350,7 @@ export const updateSale = asyncHandler(async (req, res) => {
           (sale.balance > 0
             ? `⚠️ *Balance Due:* ${fmtN(sale.balance)}\n`
             : `✅ *Fully Paid*\n`) +
-          `\nThank you! 🙏\n_${bizName} · trackeet.ng_`;
+          `\nThank you! 🙏\n_${bizName} · gettrackeet.com_`;
         const { sendRawWhatsAppMessage } =
           await import("../services/whatsappService.js");
         await sendRawWhatsAppMessage(req.user._id.toString(), phone, msg);
@@ -405,7 +405,7 @@ export const sendSaleWhatsApp = asyncHandler(async (req, res) => {
       ? `⚠️ *Balance Due:* ${fmtN(sale.balance)}\n`
       : `✅ *Fully Paid*\n`) +
     (sale.notes ? `\n📋 *Notes:* ${sale.notes}\n` : "") +
-    `\nThank you! 🙏\n_${bizName} · trackeet.ng_`;
+    `\nThank you! 🙏\n_${bizName} · gettrackeet.com_`;
 
   const { sendRawWhatsAppMessage } =
     await import("../services/whatsappService.js");

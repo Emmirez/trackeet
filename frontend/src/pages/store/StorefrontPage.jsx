@@ -457,7 +457,7 @@ function StoreContent({
           </p>
 
           <a
-            href="https://trackeet.ng"
+            href="https://gettrackeet.com"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-purple-500 transition-colors"
@@ -679,8 +679,8 @@ export default function StorefrontPage({ defaultProduct }) {
 
   const seoTitle = `${store.name} — Shop on Trackeet`;
   const seoDesc = `Browse products and services from ${store.name}. Order via WhatsApp instantly.`;
-  const seoImage = store.logo || "https://trackeet.ng/og-default.png";
-  const seoUrl = `https://trackeet.ng/store/${store.storeName}`;
+  const seoImage = store.logo || "https://gettrackeet.com/og-default.png";
+  const seoUrl = `https://gettrackeet.com/store/${store.storeName}`;
 
   return (
     <CartProvider storeName={store.storeName}>

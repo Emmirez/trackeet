@@ -35,7 +35,7 @@ export const FEATURES = [
     icon: Globe,
     color: "bg-purple-100 text-purple-600",
     title: "Free Online Store",
-    desc: "Get your own store link at trackeet.ng/store/yourname. Customers browse, add to cart and order via WhatsApp instantly.",
+    desc: "Get your own store link at gettrackeet.com/store/yourname. Customers browse, add to cart and order via WhatsApp instantly.",
   },
   {
     icon: ShoppingBag,
@@ -71,7 +71,7 @@ export const FEATURES = [
     icon: Store,
     color: "bg-purple-100 text-purple-600",
     title: "Free Online Store",
-    desc: "Every account gets a free storefront at trackeet.ng/store/yourname. Add products with photos and customers order via WhatsApp instantly.",
+    desc: "Every account gets a free storefront at gettrackeet.com/store/yourname. Add products with photos and customers order via WhatsApp instantly.",
   },
   {
     icon: ShoppingBag,

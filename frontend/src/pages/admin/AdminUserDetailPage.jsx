@@ -131,7 +131,7 @@ export default function AdminUserDetailPage() {
                     rel="noreferrer"
                     className="hover:underline flex items-center gap-1"
                   >
-                    trackeet.ng/store/{u.storeName}
+                    gettrackeet.com/store/{u.storeName}
                     <ExternalLink size={10} />
                   </a>
                 </div>

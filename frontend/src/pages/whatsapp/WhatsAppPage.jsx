@@ -19,7 +19,7 @@ import {
   PhoneCall,
   Bot,
   Copy,
-  MessageCircle
+  MessageCircle,
 } from "lucide-react";
 import { whatsappAPI, customerAPI } from "../../services/api.js";
 import { fmt, getInitials, avatarColor } from "../../utils/helpers.js";
@@ -178,7 +178,7 @@ const QUICK_REPLIES = (
     label: "Item Not Available",
     color: "text-danger",
     bg: "bg-danger-light",
-    message: `Hello! 👋\n\nWe're sorry, the item you requested is currently *not available* or out of stock. 😔\n\nWe will notify you as soon as it's back in stock.\n\nMeanwhile, feel free to browse our store for similar items:\n🛍️ trackeet.ng/store\n\nThank you for your patience! 🙏\n_${bizName}_`,
+    message: `Hello! 👋\n\nWe're sorry, the item you requested is currently *not available* or out of stock. 😔\n\nWe will notify you as soon as it's back in stock.\n\nMeanwhile, feel free to browse our store for similar items:\n🛍️ gettrackeet.com/store\n\nThank you for your patience! 🙏\n_${bizName}_`,
   },
   {
     id: "payment_request",

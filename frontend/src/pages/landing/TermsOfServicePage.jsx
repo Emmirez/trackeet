@@ -37,7 +37,7 @@ const SECTIONS = [
       },
       {
         subtitle: "4.4 Refunds",
-        text: "We offer a 7-day money-back guarantee on all paid plans. Refund requests must be submitted to billing@trackeet.ng within 7 days of payment. Refunds are processed within 3–5 business days.",
+        text: "We offer a 7-day money-back guarantee on all paid plans. Refund requests must be submitted to billing@gettrackeet.com within 7 days of payment. Refunds are processed within 3–5 business days.",
       },
       {
         subtitle: "4.5 Upgrades and Downgrades",
@@ -52,7 +52,7 @@ const SECTIONS = [
   {
     title: "6. Online Store",
     content:
-      "Every Trackeet account includes a free online storefront accessible at trackeet.ng/store/yourstorename. You are responsible for the accuracy of product listings, pricing, and availability shown on your store. Orders placed through your store are communicated via WhatsApp and are subject to your own fulfillment and customer service practices. Trackeet does not process payments on your behalf for storefront orders unless explicitly stated.",
+      "Every Trackeet account includes a free online storefront accessible at gettrackeet.com/store/yourstorename. You are responsible for the accuracy of product listings, pricing, and availability shown on your store. Orders placed through your store are communicated via WhatsApp and are subject to your own fulfillment and customer service practices. Trackeet does not process payments on your behalf for storefront orders unless explicitly stated.",
   },
   {
     title: "5. Free Plan Limitations",
@@ -128,7 +128,7 @@ const SECTIONS = [
   {
     title: "16. Contact",
     content:
-      "If you have any questions about these Terms of Service, please contact us at legal@trackeet.ng or write to Trackeet Technologies Ltd, Victoria Island, Lagos, Nigeria.",
+      "If you have any questions about these Terms of Service, please contact us at legal@gettrackeet.com or write to Trackeet Technologies Ltd, Victoria Island, Lagos, Nigeria.",
   },
 ];
 

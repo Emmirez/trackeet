@@ -23,8 +23,10 @@ export default function ProductStorePage() {
       `Buy ${product.name} from ${store?.name}. Order via WhatsApp instantly.`
     : "Shop on Trackeet";
   const seoImage =
-    product?.images?.[0] || store?.logo || "https://trackeet.ng/og-default.png";
-  const seoUrl = `https://trackeet.ng/store/${storeName}/product/${productId}`;
+    product?.images?.[0] ||
+    store?.logo ||
+    "https://gettrackeet.com/og-default.png";
+  const seoUrl = `https://gettrackeet.com/store/${storeName}/product/${productId}`;
 
   if (isLoading)
     return (

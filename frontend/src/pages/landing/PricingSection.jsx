@@ -50,7 +50,7 @@ export default function PricingSection() {
                 Free online store included in every plan
               </p>
               <p className="text-xs text-dark-400 mt-0.5">
-                Get your own storefront at trackeet.ng/store/yourname — add
+                Get your own storefront at gettrackeet.com/store/yourname — add
                 products, share your link and receive orders via WhatsApp.
               </p>
             </div>
@@ -130,7 +130,7 @@ export default function PricingSection() {
                 )}
                 {plan.cta === "Contact Sales" ? (
                   <a
-                    href="mailto:sales@trackeet.ng?subject=Enterprise Plan Enquiry"
+                    href="mailto:sales@gettrackeet.com?subject=Enterprise Plan Enquiry"
                     className={`btn ${plan.ctaStyle} w-full`}
                   >
                     {plan.cta}

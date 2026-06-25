@@ -114,7 +114,7 @@ export const inviteMember = asyncHandler(async (req, res) => {
         </div>
       </div>
       <p style="text-align:center;color:#94a3b8;font-size:11px;margin-top:16px;">
-        © 2026 Trackeet · trackeet.ng · If you didn't expect this, ignore this email.
+        © 2026 Trackeet · gettrackeet.com · If you didn't expect this, ignore this email.
       </p>
     </div>
   `,

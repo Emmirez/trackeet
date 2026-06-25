@@ -14,10 +14,10 @@ export default function MaintenancePage() {
           <p className="text-sm text-gray-500">
             Need urgent help? Contact us at{" "}
             <a
-              href="mailto:support@trackeet.ng"
+              href="mailto:support@gettrackeet.com"
               className="text-purple-600 font-semibold hover:underline"
             >
-              support@trackeet.ng
+              support@gettrackeet.com
             </a>
           </p>
         </div>

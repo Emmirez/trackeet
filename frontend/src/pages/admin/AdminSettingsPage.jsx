@@ -32,7 +32,7 @@ export default function AdminSettingsPage() {
     flutterwave: true,
     bankTransfer: true,
   });
-  const [supportEmail, setSupportEmail] = useState("support@trackeet.ng");
+  const [supportEmail, setSupportEmail] = useState("support@gettrackeet.com");
   const [smtpHost, setSmtpHost] = useState("");
   const [smtpPort, setSmtpPort] = useState("587");
   const [smtpUser, setSmtpUser] = useState("");
@@ -60,7 +60,7 @@ export default function AdminSettingsPage() {
       setGateways(
         s.gateways || { paystack: true, flutterwave: true, bankTransfer: true },
       );
-      setSupportEmail(s.supportEmail || "support@trackeet.ng");
+      setSupportEmail(s.supportEmail || "support@gettrackeet.com");
       setSmtpHost(s.smtpHost || "");
       setSmtpPort(s.smtpPort || "587");
       setSmtpUser(s.smtpUser || "");
@@ -358,7 +358,7 @@ export default function AdminSettingsPage() {
             <input
               value={supportEmail}
               onChange={(e) => setSupportEmail(e.target.value)}
-              placeholder="support@trackeet.ng"
+              placeholder="support@gettrackeet.com"
               className="input"
             />
           </div>
@@ -387,7 +387,7 @@ export default function AdminSettingsPage() {
             <input
               value={smtpUser}
               onChange={(e) => setSmtpUser(e.target.value)}
-              placeholder="noreply@trackeet.ng"
+              placeholder="noreply@gettrackeet.com"
               className="input"
             />
           </div>
@@ -507,7 +507,7 @@ export default function AdminSettingsPage() {
           { label: "Your Role", value: user?.role },
           { label: "Your Email", value: user?.email },
           { label: "Support Email", value: supportEmail },
-          { label: "Website", value: "trackeet.ng" },
+          { label: "Website", value: "gettrackeet.com" },
         ].map((r, i) => (
           <div
             key={i}

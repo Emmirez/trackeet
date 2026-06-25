@@ -142,7 +142,7 @@ export default function AboutPage() {
                 Join 12k+ Businesses <ArrowRight size={20} />
               </Link>
               <a
-                href="mailto:hello@trackeet.ng"
+                href="mailto:hello@gettrackeet.com"
                 className="btn btn-secondary btn-lg"
               >
                 <Mail size={18} /> Talk to Us
@@ -358,8 +358,8 @@ export default function AboutPage() {
                 {
                   icon: Mail,
                   label: "Email",
-                  value: "hello@trackeet.ng",
-                  href: "mailto:hello@trackeet.ng",
+                  value: "hello@gettrackeet.com",
+                  href: "mailto:hello@gettrackeet.com",
                 },
                 {
                   icon: Twitter,

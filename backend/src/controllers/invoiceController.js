@@ -735,7 +735,7 @@ export const sendWhatsApp = asyncHandler(async (req, res) => {
                 ? `📝 *Notes:* ${invoice.delivery.notes}\n`
                 : "")
             : "") +
-          `\nThank you for your business! 🙏\n_${bizName} · trackeet.ng_`;
+          `\nThank you for your business! 🙏\n_${bizName} · gettrackeet.com_`;
 
         await sendWhatsAppImage(
           req.user._id.toString(),

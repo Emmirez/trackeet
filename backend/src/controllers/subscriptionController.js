@@ -102,7 +102,7 @@ export const initiateSubscription = asyncHandler(async (req, res) => {
         accountName: process.env.BANK_ACCOUNT_NAME,
         amount,
         reference: sub._id.toString(),
-        note: `Send proof to billing@trackeet.ng with reference: ${sub._id}`,
+        note: `Send proof to billing@gettrackeet.com with reference: ${sub._id}`,
       },
     });
   }

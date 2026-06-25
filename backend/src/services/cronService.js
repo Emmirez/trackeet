@@ -178,7 +178,7 @@ export const initCrons = () => {
           `*⚠️ Needs Attention*\n` +
           `  Overdue invoices: *${overdueCount}*\n` +
           `  Total outstanding: *${fmt(owing)}*\n\n` +
-          `_Powered by Trackeet · trackeet.ng_ 🚀`;
+          `_Powered by Trackeet · gettrackeet.com_ 🚀`;
 
         const ownerPhone = user.phone || settings.phoneNumber;
         if (!ownerPhone) {

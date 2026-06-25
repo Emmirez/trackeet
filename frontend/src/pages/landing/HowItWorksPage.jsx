@@ -45,7 +45,7 @@ const HOW_IT_WORKS = [
     icon: Store,
     color: "bg-purple-100 text-purple-600",
     title: "Launch your online store",
-    desc: "Every account comes with a free storefront at trackeet.ng/store/yourname. Add products with photos and prices — customers browse and order directly via WhatsApp.",
+    desc: "Every account comes with a free storefront at gettrackeet.com/store/yourname. Add products with photos and prices — customers browse and order directly via WhatsApp.",
   },
   {
     step: "05",

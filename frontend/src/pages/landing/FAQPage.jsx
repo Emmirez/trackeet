@@ -57,7 +57,7 @@ const FAQS = [
       },
       {
         q: "Do you offer refunds?",
-        a: "We offer a 7-day refund if you are not satisfied. Contact support@trackeet.ng within 7 days of your payment.",
+        a: "We offer a 7-day refund if you are not satisfied. Contact support@gettrackeet.com within 7 days of your payment.",
       },
     ],
   },
@@ -150,7 +150,7 @@ export default function FAQPage() {
           <p className="text-lg text-dark-500 dark:text-gray-400">
             Can't find what you're looking for?{" "}
             <a
-              href="mailto:hello@trackeet.ng"
+              href="mailto:hello@gettrackeet.com"
               className="text-primary hover:underline font-semibold"
             >
               Email us
@@ -193,7 +193,7 @@ export default function FAQPage() {
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
             <a
-              href="mailto:hello@trackeet.ng"
+              href="mailto:hello@gettrackeet.com"
               className="btn btn-primary btn-lg"
             >
               <Mail size={18} /> Email Support

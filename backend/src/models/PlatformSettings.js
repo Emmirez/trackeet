@@ -12,7 +12,7 @@ const platformSettingsSchema = new mongoose.Schema(
       flutterwave: { type: Boolean, default: true },
       bankTransfer: { type: Boolean, default: true },
     },
-    supportEmail: { type: String, default: "support@trackeet.ng" },
+    supportEmail: { type: String, default: "support@gettrackeet.com" },
     smtpHost: { type: String, default: "" },
     smtpPort: { type: String, default: "587" },
     smtpUser: { type: String, default: "" },

@@ -70,7 +70,7 @@ app.use(compression());
 // CORS
 const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:3000")
   .split(",")
-  .map(o => o.trim());
+  .map((o) => o.trim());
 
 app.use(
   cors({
@@ -142,8 +142,9 @@ app.get("/store/:storeName", async (req, res, next) => {
 
     const title = `${owner.businessName} — Shop on Trackeet`;
     const desc = `Browse products and services from ${owner.businessName}. Order via WhatsApp instantly.`;
-    const image = owner.businessLogo || "https://trackeet.ng/og-default.png";
-    const url = `https://trackeet.ng/store/${owner.storeName}`;
+    const image =
+      owner.businessLogo || "https://gettrackeet.com/og-default.png";
+    const url = `https://gettrackeet.com/store/${owner.storeName}`;
 
     return res.send(`<!DOCTYPE html>
 <html>
@@ -201,8 +202,9 @@ app.get("/store/:storeName/product/:productId", async (req, res, next) => {
     const desc =
       product.description ||
       `Buy ${product.name} from ${owner.businessName} for ${fmtN(product.price)}. Order via WhatsApp.`;
-    const image = product.images?.[0] || "https://trackeet.ng/og-default.png";
-    const url = `https://trackeet.ng/store/${owner.storeName}/product/${product._id}`;
+    const image =
+      product.images?.[0] || "https://gettrackeet.com/og-default.png";
+    const url = `https://gettrackeet.com/store/${owner.storeName}/product/${product._id}`;
 
     return res.send(`<!DOCTYPE html>
 <html>

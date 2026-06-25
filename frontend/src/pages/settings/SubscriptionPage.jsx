@@ -234,7 +234,7 @@ export default function SubscriptionPage() {
               </div>
             ) : plan.price === null ? (
               <a
-                href="mailto:sales@trackeet.ng?subject=Enterprise Plan Enquiry"
+                href="mailto:sales@gettrackeet.com?subject=Enterprise Plan Enquiry"
                 className="btn btn-secondary"
               >
                 Contact Sales
@@ -436,8 +436,8 @@ export default function SubscriptionPage() {
           </p>
           <p className="text-xs text-dark-400 mt-1">
             Use your email as payment reference. Send proof to{" "}
-            <a href="mailto:billing@trackeet.ng" className="text-primary">
-              billing@trackeet.ng
+            <a href="mailto:billing@gettrackeet.com" className="text-primary">
+              billing@gettrackeet.com
             </a>
           </p>
         </div>

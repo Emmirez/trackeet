@@ -123,7 +123,7 @@ export default function RoadmapPage() {
               </p>
             </div>
             <a
-              href="mailto:hello@trackeet.ng?subject=Feature Request"
+              href="mailto:hello@gettrackeet.com?subject=Feature Request"
               className="btn btn-primary btn-sm flex-shrink-0"
             >
               Suggest Feature
