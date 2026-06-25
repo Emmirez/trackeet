@@ -103,7 +103,7 @@ export const register = asyncHandler(async (req, res) => {
   await user.save({ validateBeforeSave: false });
 
   // Send verification email
-  const verifyLink = `${process.env.FRONTEND_URL || "http://localhost:5173"}/verify-email?token=${verificationToken}`;
+  const verifyLink = `${(process.env.FRONTEND_URL || "http://localhost:3000").split(",")[0].trim()}/verify-email?token=${verificationToken}`;
 
   await Promise.race([
     sendEmail({
@@ -244,7 +244,7 @@ export const forgotPassword = asyncHandler(async (req, res) => {
     .digest("hex");
   user.resetPasswordExpires = Date.now() + 60 * 60 * 1000;
   await user.save();
-  const url = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+  const url = `${(process.env.FRONTEND_URL || "http://localhost:3000").split(",")[0].trim()}/reset-password/${token}`;
   await sendEmail({
     to: user.email,
     subject: "Reset your Trackeet password",
@@ -306,7 +306,7 @@ export const resendVerification = asyncHandler(async (req, res) => {
   user.verificationExpires = verificationExpires;
   await user.save({ validateBeforeSave: false });
 
-  const verifyLink = `${process.env.FRONTEND_URL || "http://localhost:5173"}/verify-email?token=${verificationToken}`;
+  const verifyLink = `${(process.env.FRONTEND_URL || "http://localhost:3000").split(",")[0].trim()}/verify-email?token=${verificationToken}`;
 
   await sendEmail({
     to: email,
