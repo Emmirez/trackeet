@@ -21,6 +21,9 @@ import toast from "react-hot-toast";
 import Navbar from "../landing/Navbar.jsx";
 import Footer from "../landing/Footer.jsx";
 import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useAuthStore from "../../store/authStore.js";
+import api from "../../services/api.js";
 
 const CATEGORIES = [
   {
@@ -120,6 +123,7 @@ export default function RegisterPage() {
   const refCode = searchParams.get("ref") || "";
 
   const [referralCode, setReferralCode] = useState(refCode);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -135,12 +139,40 @@ export default function RegisterPage() {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
+  // const onSubmit = async (data) => {
+  //   setIsLoading(true);
+  //   try {
+  //     await authAPI.register({ ...data, businessCategory: selectedCategory, ref: refCode || undefined });
+  //     setRegisteredEmail(data.email);
+  //     setShowVerifyMessage(true);
+  //   } catch (err) {
+  //     toast.error(
+  //       err.response?.data?.message || err.message || "Registration failed",
+  //     );
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
-      await authAPI.register({ ...data, businessCategory: selectedCategory, ref: refCode || undefined });
-      setRegisteredEmail(data.email);
-      setShowVerifyMessage(true);
+      const res = await authAPI.register({
+        ...data,
+        businessCategory: selectedCategory,
+        ref: refCode || undefined,
+      });
+      const { token, user } = res.data;
+
+      // Log user in directly
+      import("../../services/api.js").then(({ default: api }) => {
+        api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      });
+      useAuthStore.getState().setUser(user);
+      useAuthStore.getState().setToken(token);
+
+      toast.success("Welcome to Trackeet! 🎉");
+      navigate("/dashboard");
     } catch (err) {
       toast.error(
         err.response?.data?.message || err.message || "Registration failed",
