@@ -50,6 +50,8 @@ import referralRoutes from "./routes/referral.js";
 const app = express();
 const server = http.createServer(app);
 
+app.set("trust proxy", 1);
+
 // Connect DB
 connectDB().then(async () => {
   await restoreWhatsAppSessions();
