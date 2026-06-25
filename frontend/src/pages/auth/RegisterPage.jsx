@@ -106,7 +106,10 @@ const schema = yup.object({
   businessName: yup.string().required("Business name required"),
   email: yup.string().email("Invalid email").required(),
   phone: yup.string().required("Phone required"),
-  password: yup.string().min(6).required(),
+  password: yup.string().min(6, "Password must be at least 6 characters").required(),
+  confirmPassword: yup.string()
+    .oneOf([yup.ref("password")], "Passwords do not match")
+    .required("Please confirm your password"),
 });
 
 export default function RegisterPage() {
@@ -471,6 +474,25 @@ export default function RegisterPage() {
                   </div>
                   {errors.password && (
                     <p className="input-error">{errors.password.message}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="input-label">Confirm Password</label>
+                  <div className="relative">
+                    <Lock
+                      size={15}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-dark-400"
+                    />
+                    <input
+                      {...register("confirmPassword")}
+                      type={showPwd ? "text" : "password"}
+                      placeholder="Re-enter your password"
+                      className={`input pl-9 pr-9 ${errors.confirmPassword ? "border-danger" : ""}`}
+                    />
+                  </div>
+                  {errors.confirmPassword && (
+                    <p className="input-error">{errors.confirmPassword.message}</p>
                   )}
                 </div>
 
