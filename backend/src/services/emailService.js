@@ -6,7 +6,7 @@ const client = new BrevoClient({
 
 export const sendEmail = async ({ to, subject, html, text }) => {
   try {
-    await client.sendTransactionalEmail({
+    await client.transactionalEmails.sendTransacEmail({
       sender: {
         name: process.env.FROM_NAME || "Trackeet",
         email: process.env.FROM_EMAIL || "hello@gettrackeet.com",
