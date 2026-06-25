@@ -1,24 +1,23 @@
-import nodemailer from "nodemailer";
+import * as Brevo from "@getbrevo/brevo";
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || "smtp-relay.brevo.com",
-  port: parseInt(process.env.SMTP_PORT) || 587,
-  secure: process.env.SMTP_SECURE === "true",
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+const apiInstance = new Brevo.TransactionalEmailsApi();
+apiInstance.setApiKey(
+  Brevo.TransactionalEmailsApiApiKeys.apiKey,
+  process.env.BREVO_API_KEY
+);
 
 export const sendEmail = async ({ to, subject, html, text }) => {
   try {
-    await transporter.sendMail({
-      from: `"${process.env.FROM_NAME || "Trackeet"}" <${process.env.FROM_EMAIL}>`,
-      to,
-      subject,
-      html,
-      text: text || subject,
-    });
+    const sendSmtpEmail = new Brevo.SendSmtpEmail();
+    sendSmtpEmail.subject = subject;
+    sendSmtpEmail.htmlContent = html;
+    sendSmtpEmail.sender = {
+      name: process.env.FROM_NAME || "Trackeet",
+      email: process.env.FROM_EMAIL || "hello@gettrackeet.com",
+    };
+    sendSmtpEmail.to = [{ email: to }];
+
+    await apiInstance.sendTransacEmail(sendSmtpEmail);
     console.log(`✅ Email sent to ${to}`);
   } catch (err) {
     console.error("Email error:", err.message);
