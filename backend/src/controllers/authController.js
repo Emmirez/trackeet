@@ -94,60 +94,117 @@ export const register = asyncHandler(async (req, res) => {
     }
   }
 
-  // Generate verification token
-  const verificationToken = crypto.randomBytes(32).toString("hex");
-  const verificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
-
-  user.verificationToken = verificationToken;
-  user.verificationExpires = verificationExpires;
+  // Mark user as verified since we removed email verification requirement
+  user.isVerified = true;
   await user.save({ validateBeforeSave: false });
 
-  // Send verification email
-  const verifyLink = `${(process.env.FRONTEND_URL || "http://localhost:3000").split(",")[0].trim()}/verify-email?token=${verificationToken}`;
+  // Generate verification token
+  // const verificationToken = crypto.randomBytes(32).toString("hex");
+  // const verificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
-  await Promise.race([
-    sendEmail({
-      to: user.email,
-      subject: "Verify your Trackeet account",
-      html: `
+  // user.verificationToken = verificationToken;
+  // user.verificationExpires = verificationExpires;
+  // await user.save({ validateBeforeSave: false });
+
+  // // Send verification email
+  // const verifyLink = `${(process.env.FRONTEND_URL || "http://localhost:3000").split(",")[0].trim()}/verify-email?token=${verificationToken}`;
+
+  // await Promise.race([
+  //   sendEmail({
+  //     to: user.email,
+  //     subject: "Verify your Trackeet account",
+  //     html: `
+  //   <div style="font-family:sans-serif;max-width:560px;margin:0 auto;">
+  //     <div style="background:linear-gradient(135deg,#7C3AED,#6366F1);padding:32px;border-radius:16px 16px 0 0;text-align:center;">
+  //       <h1 style="color:#fff;margin:0;font-size:24px;">TRACKEET</h1>
+  //       <p style="color:rgba(255,255,255,0.8);margin:4px 0 0;font-size:13px;">Smart Invoice Management</p>
+  //     </div>
+  //     <div style="background:#fff;padding:32px;border-radius:0 0 16px 16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+  //       <h2 style="color:#0f172a;margin:0 0 8px;">Verify your email 📧</h2>
+  //       <p style="color:#64748b;line-height:1.6;">
+  //         Hi <strong style="color:#0f172a;">${user.firstName}</strong>, welcome to Trackeet!
+  //         Please verify your email address to activate your account.
+  //       </p>
+  //       <div style="text-align:center;margin:28px 0;">
+  //         <a href="${verifyLink}"
+  //            style="background:#7C3AED;color:#fff;text-decoration:none;padding:14px 32px;border-radius:12px;font-size:16px;font-weight:700;display:inline-block;">
+  //           Verify My Email →
+  //         </a>
+  //       </div>
+  //       <p style="color:#94a3b8;font-size:12px;text-align:center;">
+  //         Or copy this link:<br/>
+  //         <a href="${verifyLink}" style="color:#7C3AED;word-break:break-all;font-size:11px;">${verifyLink}</a>
+  //       </p>
+  //       <div style="background:#fef3c7;border-radius:8px;padding:12px;margin-top:20px;">
+  //         <p style="margin:0;color:#92400e;font-size:12px;">
+  //           ⚠️ This link expires in <strong>24 hours</strong>.<br/>
+  //           📬 Can't find the email? Check your <strong>spam/junk folder</strong> and mark as "Not Spam".
+  //         </p>
+  //       </div>
+  //     </div>
+  //     <p style="text-align:center;color:#94a3b8;font-size:11px;margin-top:16px;">
+  //       © 2026 Trackeet · trackeet.ng · If you didn't create this account, ignore this email.
+  //     </p>
+  //   </div>
+  // `,
+  //   }),
+  //   new Promise((_, reject) =>
+  //     setTimeout(() => reject(new Error("Email timeout")), 5000),
+  //   ),
+  // ]).catch((err) => console.error("Verification email failed:", err.message));
+
+  // Send welcome email non-blocking
+
+  sendEmail({
+    to: user.email,
+    subject: "Welcome to Trackeet! 🎉",
+    html: `
     <div style="font-family:sans-serif;max-width:560px;margin:0 auto;">
       <div style="background:linear-gradient(135deg,#7C3AED,#6366F1);padding:32px;border-radius:16px 16px 0 0;text-align:center;">
         <h1 style="color:#fff;margin:0;font-size:24px;">TRACKEET</h1>
-        <p style="color:rgba(255,255,255,0.8);margin:4px 0 0;font-size:13px;">Smart Invoice Management</p>
+        <p style="color:rgba(255,255,255,0.8);margin:4px 0 0;font-size:13px;">Smart Invoicing & WhatsApp Commerce</p>
       </div>
       <div style="background:#fff;padding:32px;border-radius:0 0 16px 16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
-        <h2 style="color:#0f172a;margin:0 0 8px;">Verify your email 📧</h2>
+        <h2 style="color:#0f172a;margin:0 0 8px;">Welcome aboard, ${user.firstName}! 🚀</h2>
         <p style="color:#64748b;line-height:1.6;">
-          Hi <strong style="color:#0f172a;">${user.firstName}</strong>, welcome to Trackeet!
-          Please verify your email address to activate your account.
+          Your Trackeet account is ready. Here's what you can do right now:
         </p>
+        <div style="margin:20px 0;">
+          <div style="display:flex;align-items:center;margin-bottom:12px;">
+            <span style="font-size:20px;margin-right:12px;">📄</span>
+            <p style="margin:0;color:#0f172a;font-size:14px;"><strong>Create invoices</strong> — professional PDFs in seconds</p>
+          </div>
+          <div style="display:flex;align-items:center;margin-bottom:12px;">
+            <span style="font-size:20px;margin-right:12px;">💬</span>
+            <p style="margin:0;color:#0f172a;font-size:14px;"><strong>Connect WhatsApp</strong> — auto-send invoices & receipts</p>
+          </div>
+          <div style="display:flex;align-items:center;margin-bottom:12px;">
+            <span style="font-size:20px;margin-right:12px;">🛍️</span>
+            <p style="margin:0;color:#0f172a;font-size:14px;"><strong>Launch your store</strong> — free storefront at gettrackeet.com/store/${user.storeName}</p>
+          </div>
+          <div style="display:flex;align-items:center;">
+            <span style="font-size:20px;margin-right:12px;">💰</span>
+            <p style="margin:0;color:#0f172a;font-size:14px;"><strong>Track payments</strong> — know who paid and who owes you</p>
+          </div>
+        </div>
         <div style="text-align:center;margin:28px 0;">
-          <a href="${verifyLink}"
+          <a href="https://gettrackeet.com/dashboard"
              style="background:#7C3AED;color:#fff;text-decoration:none;padding:14px 32px;border-radius:12px;font-size:16px;font-weight:700;display:inline-block;">
-            Verify My Email →
+            Go to Dashboard →
           </a>
         </div>
-        <p style="color:#94a3b8;font-size:12px;text-align:center;">
-          Or copy this link:<br/>
-          <a href="${verifyLink}" style="color:#7C3AED;word-break:break-all;font-size:11px;">${verifyLink}</a>
-        </p>
-        <div style="background:#fef3c7;border-radius:8px;padding:12px;margin-top:20px;">
-          <p style="margin:0;color:#92400e;font-size:12px;">
-            ⚠️ This link expires in <strong>24 hours</strong>.<br/>
-            📬 Can't find the email? Check your <strong>spam/junk folder</strong> and mark as "Not Spam".
+        <div style="background:#f0fdf4;border-radius:8px;padding:12px;margin-top:20px;border:1px solid #bbf7d0;">
+          <p style="margin:0;color:#166534;font-size:12px;">
+            🎁 <strong>Free plan includes:</strong> 5 invoices/month, free online store, WhatsApp automation & more.
           </p>
         </div>
       </div>
       <p style="text-align:center;color:#94a3b8;font-size:11px;margin-top:16px;">
-        © 2026 Trackeet · trackeet.ng · If you didn't create this account, ignore this email.
+        © 2026 Trackeet · gettrackeet.com · Need help? Email us at hello@gettrackeet.com
       </p>
     </div>
-  `,
-    }),
-    new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("Email timeout")), 5000),
-    ),
-  ]).catch((err) => console.error("Verification email failed:", err.message));
+    `,
+  }).catch((err) => console.error("Welcome email failed:", err.message));
 
   const token = generateToken(user._id);
 
@@ -173,8 +230,21 @@ export const register = asyncHandler(async (req, res) => {
 
   res.status(201).json({
     success: true,
-    message: "Account created! Please check your email to verify your account.",
-    email: user.email,
+    message: "Account created successfully! Welcome to Trackeet.",
+    token,
+    user: {
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      phone: user.phone,
+      plan: user.plan,
+      role: user.role,
+      businessName: user.businessName,
+      businessCategory: user.businessCategory,
+      storeName: user.storeName,
+      storeActive: user.storeActive,
+    },
   });
 });
 
@@ -186,12 +256,12 @@ export const login = asyncHandler(async (req, res) => {
     throw new AppError("Invalid credentials", 401);
   if (user.status === "suspended")
     throw new AppError("Account suspended. Contact support.", 403);
-  if (!user.isVerified && user.role !== "superadmin") {
-    throw new AppError(
-      "Please verify your email before logging in. Check your inbox or spam folder.",
-      401,
-    );
-  }
+  // if (!user.isVerified && user.role !== "superadmin") {
+  //   throw new AppError(
+  //     "Please verify your email before logging in. Check your inbox or spam folder.",
+  //     401,
+  //   );
+  // }
   if (user.twoFactorEnabled) {
     return res.json({
       success: true,
