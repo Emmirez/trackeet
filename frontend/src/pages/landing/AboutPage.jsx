@@ -56,24 +56,28 @@ const TEAM = [
     role: "CEO & Co-founder",
     emoji: "👨🏿‍💼",
     bg: "bg-primary",
+    photo: "/images/james1.jpg",
   },
   {
     name: "James Justin",
     role: "CTO & Co-founder",
     emoji: "👩🏿‍💻",
     bg: "bg-success",
+    photo: "/images/james2.jpg",
   },
   {
     name: "Dara Obinna",
     role: "Head of Product",
     emoji: "👨🏿‍🎨",
     bg: "bg-warning",
+    photo: "/images/tega1.jpg",
   },
   {
     name: "Tega Jones",
     role: "Head of Customer Success",
     emoji: "👩🏿‍🤝‍👩🏿",
     bg: "bg-danger",
+    photo: "/images/tega2.jpg",
   },
 ];
 
@@ -152,6 +156,28 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Hero image strip */}
+      <div className="py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { src: "/images/business.jpg", label: "Our Mission" },
+            { src: "/images/paid.jpg", label: "Payment Solutions" },
+            { src: "/images/store3.jpg", label: "Nigerian Businesses" },
+            { src: "/images/create.jpg", label: "Built for Africa" },
+          ].map((img, i) => (
+            <div key={i} className="relative h-36 rounded-2xl overflow-hidden group">
+              <img
+                src={img.src}
+                alt={img.label}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent" />
+              <p className="absolute bottom-2 left-3 text-white text-xs font-semibold">{img.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Stats */}
       <div className="py-8 bg-white dark:bg-dark">
         <div className="max-w-6xl mx-4 sm:mx-8 lg:mx-auto">
@@ -215,7 +241,21 @@ export default function AboutPage() {
                 </p>
               </div>
             </motion.div>
+            
             <motion.div variants={fade} className="space-y-4">
+              {/* Story image */}
+              <div className="relative h-48 rounded-3xl overflow-hidden mb-6">
+                <img
+                  src="/images/business.jpg"
+                  alt="Our story"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-white font-bold text-sm">From Lagos to all 36 states 🇳🇬</p>
+                  <p className="text-white/70 text-xs mt-1">12,000+ businesses trust Trackeet</p>
+                </div>
+              </div>
               {TIMELINE.map((t, i) => (
                 <div key={i} className="flex gap-4">
                   <div className="flex flex-col items-center">
@@ -242,6 +282,28 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Full width banner */}
+      <div className="py-10 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
+        <div className="max-w-7xl mx-auto relative rounded-3xl overflow-hidden h-56">
+          <img
+            src="/images/paid.jpg"
+            alt="Nigerian businesses"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 flex items-center justify-center flex-col text-center px-8">
+            <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
+              Built by Nigerians, for Nigerians 🇳🇬
+            </h3>
+            <p className="text-white/80 text-sm max-w-md">
+              Every feature in Trackeet was built based on real feedback from Nigerian business owners just like you.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Values */}
 
       {/* Values */}
       <section className="py-20 bg-gray-50 dark:bg-surface">
@@ -309,10 +371,18 @@ export default function AboutPage() {
                   variants={fade}
                   className="card text-center hover:shadow-glow-sm transition-all hover:-translate-y-1"
                 >
-                  <div
-                    className={`w-20 h-20 ${member.bg} rounded-3xl flex items-center justify-center mx-auto mb-4 text-4xl`}
-                  >
-                    {member.emoji}
+                  <div className="w-20 h-20 rounded-3xl mx-auto mb-4 overflow-hidden">
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className={`w-20 h-20 ${member.bg} rounded-3xl flex items-center justify-center text-4xl`}>
+                        {member.emoji}
+                      </div>
+                    )}
                   </div>
                   <h4 className="font-bold text-dark dark:text-white mb-1">
                     {member.name}
