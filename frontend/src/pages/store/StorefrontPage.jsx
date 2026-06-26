@@ -386,19 +386,19 @@ function StoreContent({
                 placeholder="Your name (optional)"
                 className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-purple-400 bg-white"
               />
-              <div className="flex gap-2">
+              <div className="flex gap-2 w-full">
                 <input
                   value={subEmail}
                   onChange={(e) => setSubEmail(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
                   placeholder="Your email address"
                   type="email"
-                  className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-purple-400 bg-white"
+                  className="min-w-0 flex-1 border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-purple-400 bg-white"
                 />
                 <button
                   onClick={handleSubscribe}
                   disabled={subscribing || !subEmail.trim()}
-                  className="bg-purple-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-purple-700 transition-colors disabled:opacity-50"
+                  className="shrink-0 bg-purple-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-purple-700 transition-colors disabled:opacity-50"
                 >
                   {subscribing ? "..." : "Join"}
                 </button>
