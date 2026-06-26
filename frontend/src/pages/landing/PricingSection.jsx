@@ -37,6 +37,35 @@ export default function PricingSection() {
               </button>
             </div>
           </motion.div>
+          {/* Lifestyle image banner */}
+          <motion.div variants={fade} className="mb-8 relative rounded-3xl overflow-hidden h-48">
+            <img
+              src="/images/whats.jpg"
+              alt="Nigerian business owners"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-purple-10/70" />
+            <div className="absolute inset-0 flex items-center px-8 gap-8">
+              <div className="flex-1">
+                <p className="text-white/80 text-sm font-medium mb-1">Trusted by 12,000+ businesses</p>
+                <h3 className="text-white text-2xl font-black mb-2">Plans that grow with your business</h3>
+                <p className="text-white/70 text-sm">Start free. Upgrade when you're ready. No contracts.</p>
+              </div>
+              <div className="hidden md:grid grid-cols-2 gap-3">
+                {[
+                  { value: "12K+", label: "Businesses" },
+                  { value: "₦2.4B+", label: "Invoiced" },
+                  { value: "98%", label: "Satisfaction" },
+                  { value: "36", label: "States" },
+                ].map((stat, i) => (
+                  <div key={i} className="bg-white/20 backdrop-blur-sm rounded-xl p-3 text-center">
+                    <p className="text-white font-black text-lg">{stat.value}</p>
+                    <p className="text-white/70 text-xs">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
           {/* Storefront banner */}
           <motion.div
             variants={fade}

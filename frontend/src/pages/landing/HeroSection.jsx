@@ -41,11 +41,15 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-gradient-to-br from-primary-50 via-white to-purple-50 dark:from-dark dark:via-surface dark:to-dark">
-      {/* Background blobs */}
+      {/* Background blobs + image collage */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-purple-400/10 rounded-full blur-3xl" />
         <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl" />
+        {/* Subtle background image collage */}
+        <div className="absolute right-0 top-0 w-1/2 h-full opacity-[0.04] dark:opacity-[0.03]">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&auto=format&fit=crop&q=80" alt="" className="w-full h-full object-cover" />
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-12 items-center">
@@ -134,6 +138,21 @@ export default function HeroSection() {
               <CheckCircle size={16} className="text-success" /> Free plan
               forever
             </div>
+          </div>
+
+           {/* Business image strip */}
+          <div className="flex gap-2 mb-6 overflow-hidden rounded-2xl">
+            {[
+              "/images/pay.jpg",
+              "/images/fashion.jpg",
+              "/images/restuarant.jpg",
+              "/images/business.jpg",
+            ].map((src, i) => (
+              <div key={i} className="relative flex-1 h-16 rounded-xl overflow-hidden">
+                <img src={src} alt="" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-primary/20 rounded-xl" />
+              </div>
+            ))}
           </div>
 
           {/* Social proof */}

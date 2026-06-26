@@ -17,6 +17,48 @@ export default function HowItWorksSection() {
               — ready before your next customer calls.
             </p>
           </motion.div>
+          {/* Real business showcase images */}
+          <div className="grid grid-cols-3 gap-4 mb-16 rounded-3xl overflow-hidden">
+            <div className="relative h-48 rounded-2xl overflow-hidden group col-span-1">
+              <img
+                src="/images/invoice.jpg"
+                alt="Business owner sending invoice"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <p className="text-white text-xs font-bold">Create Invoice</p>
+                <p className="text-white/70 text-[10px]">30 seconds flat</p>
+              </div>
+            </div>
+            <div className="relative h-48 rounded-2xl overflow-hidden group col-span-1">
+              <img
+                src="/images/whats.jpg"
+                alt="WhatsApp business messaging"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <p className="text-white text-xs font-bold">
+                  WhatsApp Automation
+                </p>
+                <p className="text-white/70 text-[10px]">Auto-send invoices</p>
+              </div>
+            </div>
+            <div className="relative h-48 rounded-2xl overflow-hidden group col-span-1">
+              <img
+                src="/images/store3.jpg"
+                alt="Online store"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <p className="text-white text-xs font-bold">Online Store</p>
+                <p className="text-white/70 text-[10px]">Free storefront</p>
+              </div>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
             {HOW_IT_WORKS.map((step, i) => (
               <motion.div key={i} variants={fade} className="text-center group">
@@ -47,6 +89,34 @@ export default function HowItWorksSection() {
           </div>
         </Section>
       </div>
+      {/* Bottom lifestyle image + CTA */}
+      <motion.div
+        variants={fade}
+        className="mt-16 relative rounded-3xl overflow-hidden"
+      >
+        <img
+          src="/images/restuarant.jpg"
+          alt="Nigerian business owner"
+          className="w-full h-64 object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-purple-00/80" />
+        <div className="absolute inset-0 flex items-center justify-center flex-col text-center p-8">
+          <h3 className="text-2xl font-black text-white mb-2">
+            Ready to get started?
+          </h3>
+          <p className="text-white/80 text-sm mb-6 max-w-md">
+            Join 12,000+ Nigerian businesses already using Trackeet to get paid
+            faster.
+          </p>
+
+          <a
+            href="/register"
+            className="bg-white text-primary font-bold px-8 py-3 rounded-2xl hover:bg-primary-light transition-colors"
+          >
+            Start Free Today →
+          </a>
+        </div>
+      </motion.div>
     </section>
   );
 }

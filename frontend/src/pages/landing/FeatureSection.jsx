@@ -20,6 +20,38 @@ export default function FeaturesSection() {
               Everything a Modern business owner needs to look professional and get paid faster — in one simple app.
             </p>
           </motion.div>
+          {/* Real business image strip */}
+          <div className="grid grid-cols-4 gap-3 mb-12 rounded-3xl overflow-hidden">
+            {[
+              {
+                src: "/images/pay.jpg",
+                label: "Payment Tracking"
+              },
+              {
+                src: "/images/business.jpg",
+                label: "Team Collaboration"
+              },
+              {
+                src: "/images/fashion.jpg",
+                label: "Online Store"
+              },
+              {
+                src: "/images/team1.jpg",
+                label: "Business Growth"
+              },
+            ].map((img, i) => (
+              <div key={i} className="relative h-40 overflow-hidden rounded-2xl group">
+                <img
+                  src={img.src}
+                  alt={img.label}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent" />
+                <p className="absolute bottom-2 left-3 text-white text-xs font-semibold">{img.label}</p>
+              </div>
+            ))}
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {FEATURES.map((f, i) => (
               <motion.div key={i} variants={fade}

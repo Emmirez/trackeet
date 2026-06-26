@@ -45,6 +45,50 @@ export default function TestimonialsSection() {
             </p>
           </motion.div>
 
+          {/* Business type image grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+            {[
+              {
+                src: "/images/store1.jpg",
+                label: "Fashion & Retail",
+                emoji: "👗",
+              },
+              {
+                src: "/images/eating.jpg",
+                label: "Food & Catering",
+                emoji: "🍔",
+              },
+              {
+                src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&auto=format&fit=crop&q=80",
+                label: "Beauty & Salon",
+                emoji: "💅",
+              },
+              {
+                src: "/images/gadget.jpg",
+                label: "Electronics",
+                emoji: "📱",
+              },
+            ].map((img, i) => (
+              <div
+                key={i}
+                className="relative h-32 rounded-2xl overflow-hidden group"
+              >
+                <img
+                  src={img.src}
+                  alt={img.label}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent" />
+                <div className="absolute bottom-2 left-3 flex items-center gap-1.5">
+                  <span className="text-sm">{img.emoji}</span>
+                  <p className="text-white text-xs font-semibold">
+                    {img.label}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
           {useReal ? (
             // Real feedback from DB
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
