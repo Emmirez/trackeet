@@ -203,7 +203,7 @@ export default function HowItWorksPage() {
                           [
                             "/images/create.jpg",
                             "/images/customer.jpg",
-                            "/images/invoice1.jpg",
+                            "/images/invoice.jpg",
                             "/images/fashion.jpg",
                             "/images/paid.jpg",
                           ][i]
