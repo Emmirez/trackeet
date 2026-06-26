@@ -136,6 +136,46 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* Lifestyle image banner */}
+      <div className="py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            {
+              src: "/images/team1.jpg",
+              label: "Track Every Payment",
+              emoji: "💰",
+            },
+            {
+              src: "/images/fashion.jpg",
+              label: "Launch Your Store",
+              emoji: "🛍️",
+            },
+            {
+              src: "/images/eating.jpg",
+              label: "Food Businesses",
+              emoji: "🍔",
+            },
+            { src: "/images/business.jpg", label: "Grow Faster", emoji: "📈" },
+          ].map((img, i) => (
+            <div
+              key={i}
+              className="relative h-36 rounded-2xl overflow-hidden group"
+            >
+              <img
+                src={img.src}
+                alt={img.label}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent" />
+              <div className="absolute bottom-2 left-3 flex items-center gap-1.5">
+                <span className="text-sm">{img.emoji}</span>
+                <p className="text-white text-xs font-semibold">{img.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Plans */}
       <section className="py-16 bg-white dark:bg-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -396,6 +436,34 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+
+      {/* Bottom CTA banner */}
+      <div className="py-10 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
+        <div className="max-w-7xl mx-auto relative rounded-3xl overflow-hidden h-64">
+          <img
+            src="/images/sal.jpg"
+            alt="Nigerian business owners"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 flex items-center justify-center flex-col text-center px-8">
+            <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
+              Start free. Upgrade when ready.
+            </h3>
+            <p className="text-white/80 text-sm max-w-md mb-5">
+              Join 12,000+ Nigerian businesses already using Trackeet to get paid faster and look more professional.
+            </p>
+            <Link
+              to="/register"
+              className="bg-white text-dark font-bold px-8 py-3 rounded-2xl hover:bg-gray-100 transition-all shadow-xl hover:scale-105"
+            >
+              Get Started Free →
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
 
       <Footer />
     </div>
