@@ -86,6 +86,7 @@ import UnsubscribePage from "./pages/newsletter/UnsubscribePage.jsx";
 import ReferralPage from "./pages/referral/ReferralPage.jsx";
 import InstallAppBanner from "./components/InstallAppBanner.jsx";
 import CookieConsent from "./components/CookieConsent.jsx";
+import StoreCouponsPage from "./pages/coupons/StoreCouponsPage.jsx";
 
 
 
@@ -237,6 +238,7 @@ export default function App() {
           <Route path="newsletter" element={<NewsletterPage />} />
           <Route path="deliveries" element={<DeliveriesPage />} />
           <Route path="referral" element={<ReferralPage />} />
+          <Route path="coupons" element={<StoreCouponsPage />} />
         </Route>
 
         <Route
