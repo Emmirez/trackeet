@@ -46,6 +46,7 @@ import feedbackRoutes from "./routes/feedback.js";
 import trackingRoutes from "./routes/tracking.js";
 import subscriberRoutes from "./routes/subscribers.js";
 import referralRoutes from "./routes/referral.js";
+import storeCouponRoutes from "./routes/storeCoupons.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -256,6 +257,7 @@ app.use("/api/feedback", feedbackRoutes);
 app.use("/api/track", trackingRoutes);
 app.use("/api/subscribers", subscriberRoutes);
 app.use("/api/referral", referralRoutes);
+app.use("/api/store-coupons", storeCouponRoutes);
 app.use(maintenanceCheck);
 
 // Health check
