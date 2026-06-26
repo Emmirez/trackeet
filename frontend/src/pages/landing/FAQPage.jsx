@@ -159,6 +159,29 @@ export default function FAQPage() {
         </div>
       </section>
 
+      {/* Image strip */}
+      <div className="py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
+        <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { src: "/images/paid.jpg", label: "Easy Setup" },
+            { src: "/images/pay.jpg", label: "Secure Payments" },
+            { src: "/images/store3.jpg", label: "Online Store" },
+            { src: "/images/whats.jpg", label: "WhatsApp Auto" },
+          ].map((img, i) => (
+            <div key={i} className="relative h-28 rounded-2xl overflow-hidden group">
+              <img
+                src={img.src}
+                alt={img.label}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent" />
+              <p className="absolute bottom-2 left-3 text-white text-xs font-semibold">{img.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+
       {/* FAQ sections */}
       <section className="py-16 bg-white dark:bg-dark">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -179,6 +202,27 @@ export default function FAQPage() {
           ))}
         </div>
       </section>
+
+      {/* Banner */}
+      <div className="py-10 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
+        <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden h-48">
+          <img
+            src="/images/track.jpg"
+            alt="Trackeet support"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 flex items-center justify-center flex-col text-center px-8">
+            <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
+              Still have questions?
+            </h3>
+            <p className="text-white/80 text-sm max-w-md">
+              Our Nigerian support team is available to help you get started.
+            </p>
+          </div>
+        </div>
+      </div>
+
 
       {/* Still need help */}
       <section className="py-16 bg-gray-50 dark:bg-surface text-center">
