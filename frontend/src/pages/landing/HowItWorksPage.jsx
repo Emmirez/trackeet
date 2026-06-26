@@ -91,6 +91,42 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
+      {/* Image strip */}
+      <div className="py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            {
+              src: "/images/create.jpg",
+              label: "Create Account",
+              step: "01",
+            },
+            { src: "/images/track.jpg", label: "Track Payments", step: "02" },
+            { src: "/images/fashion.jpg", label: "Launch Store", step: "03" },
+            { src: "/images/paid.jpg", label: "Get Paid", step: "04" },
+          ].map((img, i) => (
+            <div
+              key={i}
+              className="relative h-36 rounded-2xl overflow-hidden group"
+            >
+              <img
+                src={img.src}
+                alt={img.label}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent" />
+              <div className="absolute top-2 left-3 w-7 h-7 bg-primary rounded-full flex items-center justify-center">
+                <span className="text-white text-[10px] font-black">
+                  {img.step}
+                </span>
+              </div>
+              <p className="absolute bottom-2 left-3 text-white text-xs font-semibold">
+                {img.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Steps grid */}
       <section className="py-20 bg-white dark:bg-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,17 +196,29 @@ export default function HowItWorksPage() {
                   variants={fade}
                   className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-10 items-center`}
                 >
-                  <div className="flex-shrink-0">
-                    <div className="relative w-32 h-32">
-                      <div
-                        className={`w-32 h-32 ${step.color} rounded-3xl flex items-center justify-center`}
-                      >
-                        <step.icon size={48} />
-                      </div>
-                      <div className="absolute -top-3 -right-3 w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                  <div className="flex-shrink-0 w-full lg:w-80">
+                    <div className="relative h-52 rounded-3xl overflow-hidden">
+                      <img
+                        src={
+                          [
+                            "/images/create.jpg",
+                            "/images/customer.jpg",
+                            "/images/invoice1.jpg",
+                            "/images/fashion.jpg",
+                            "/images/paid.jpg",
+                          ][i]
+                        }
+                        alt={step.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent" />
+                      <div className="absolute top-3 left-3 w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg">
                         <span className="text-sm font-black text-white">
                           {step.step}
                         </span>
+                      </div>
+                      <div className="absolute bottom-3 left-3 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                        <step.icon size={20} className="text-white" />
                       </div>
                     </div>
                   </div>
