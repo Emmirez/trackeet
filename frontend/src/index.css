@@ -2,10 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
+/* Prevent iOS horizontal scroll bounce */
+html, body {
   overflow-x: hidden;
-  max-width: 100vw;
+  width: 100%;
+}
+
+body {
+  overscroll-behavior-x: none;
+  -webkit-overflow-scrolling: touch; 
+}
+
+/* Prevent iOS text input zoom */
+input, select, textarea {
+  font-size: 16px !important; 
 }
 
 #root {
@@ -19,22 +29,6 @@ body {
 
 [data-theme="light"] * {
   --tw-bg-opacity: 1;
-}
-
-/* Fix iOS viewport bounce/resize on keyboard open */
-html {
-  height: -webkit-fill-available;
-}
-
-body {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-  
-}
-
-/* Prevent layout shift on iOS when keyboard appears */
-input, textarea, select {
-  font-size: 16px; /* Prevents iOS auto-zoom on focus */
 }
 
 @layer base {
