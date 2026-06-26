@@ -155,6 +155,33 @@ export default function FeaturesPage() {
         </div>
       </section>
 
+      {/* Business image strip */}
+      <div className="bg-white dark:bg-dark px-4 pt-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-4 gap-3">
+          {[
+            { src: "/images/pay.jpg", label: "Payment Tracking" },
+            { src: "/images/fashion.jpg", label: "Online Store" },
+            { src: "/images/restuarant.jpg", label: "Food Business" },
+            { src: "/images/business.jpg", label: "Business Growth" },
+          ].map((img, i) => (
+            <div
+              key={i}
+              className="relative h-36 rounded-2xl overflow-hidden group"
+            >
+              <img
+                src={img.src}
+                alt={img.label}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent" />
+              <p className="absolute bottom-2 left-3 text-white text-xs font-semibold">
+                {img.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Storefront banner */}
       <div className="bg-white dark:bg-dark px-4 pt-8">
         <div className="max-w-7xl mx-auto">
@@ -226,6 +253,33 @@ export default function FeaturesPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Lifestyle banner */}
+      <div className="py-10 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
+        <div className="max-w-7xl mx-auto relative rounded-3xl overflow-hidden h-64">
+          <img
+            src="/images/invoice.jpg"
+            alt="Business owners"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 flex items-center justify-center flex-col text-center px-8">
+            <h3 className="text-2xl sm:text-3xl font-black text-white mb-3">
+              Everything your business needs
+            </h3>
+            <p className="text-white/80 text-sm max-w-md mb-5">
+              Professional tools built specifically for Nigerian businesses —
+              invoicing, payments, WhatsApp and your free online store.
+            </p>
+            <Link
+              to="/register"
+              className="bg-white text-dark font-bold px-8 py-3 rounded-2xl hover:bg-gray-100 transition-all shadow-xl hover:scale-105"
+            >
+              Start Free Today →
+            </Link>
+          </div>
+        </div>
+      </div>
 
       {/* CTA */}
       <div className="py-8 bg-white dark:bg-dark">
