@@ -29,7 +29,7 @@ html {
 body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  overscroll-behavior: none;
+  
 }
 
 /* Prevent layout shift on iOS when keyboard appears */
