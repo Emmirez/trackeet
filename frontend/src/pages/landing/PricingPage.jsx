@@ -327,7 +327,7 @@ export default function PricingPage() {
               </div>
 
               {/* Flutterwave */}
-              <div className="flex flex-col items-center gap-2">
+              {/* <div className="flex flex-col items-center gap-2">
                 <div className="w-14 h-14 rounded-full bg-white shadow-card border border-gray-100 flex items-center justify-center">
                   <svg viewBox="0 0 48 48" className="w-10 h-10">
                     <rect width="48" height="48" rx="24" fill="#F5A623" />
@@ -351,10 +351,10 @@ export default function PricingPage() {
                 <span className="text-xs text-dark-400 font-medium">
                   Flutterwave
                 </span>
-              </div>
+              </div> */}
 
               {/* Stripe */}
-              <div className="flex flex-col items-center gap-2">
+              {/* <div className="flex flex-col items-center gap-2">
                 <div className="w-14 h-14 rounded-full bg-white shadow-card border border-gray-100 flex items-center justify-center">
                   <svg viewBox="0 0 48 48" className="w-10 h-10">
                     <rect width="48" height="48" rx="24" fill="#635BFF" />
@@ -367,7 +367,7 @@ export default function PricingPage() {
                 <span className="text-xs text-dark-400 font-medium">
                   Stripe
                 </span>
-              </div>
+              </div> */}
 
               {/* Bank Transfer */}
               <div className="flex flex-col items-center gap-2">
