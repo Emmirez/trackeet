@@ -231,7 +231,7 @@ export default function HowItWorksPage() {
                     </p>
                     {step.step === "04" && (
                       <a
-                        href="/store/demo"
+                        href="https://www.gettrackeet.com/store/trendova"
                         target="_blank"
                         rel="noreferrer"
                         className="btn btn-secondary btn-sm inline-flex"
