@@ -91,13 +91,13 @@ export default function StoreCouponsPage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-black text-dark dark:text-white flex items-center gap-2">
-            <Tag size={24} className="text-primary" /> Store Coupons
+            <Tag size={24} className="text-primary " /> Store Coupons
           </h1>
-          <p className="text-dark-400 text-sm mt-1">
+          <p className="text-dark-600 text-sm mt-1">
             Create discount codes for your store customers
           </p>
         </div>
-        <button onClick={() => setShowModal(true)} className="btn btn-primary">
+        <button onClick={() => setShowModal(true)} className="btn btn-primary flex-shrink-0">
           <Plus size={16} /> New Coupon
         </button>
       </div>
@@ -328,7 +328,7 @@ export default function StoreCouponsPage() {
                 <button
                   onClick={handleSubmit}
                   disabled={createMutation.isPending}
-                  className="btn btn-primary flex-1"
+                  className="btn btn-primary flex-shrink-0"
                 >
                   {createMutation.isPending ? "Creating..." : "Create Coupon"}
                 </button>

@@ -428,8 +428,8 @@ export default function PricingPage() {
               </p>
               <p className="text-xs text-dark-400 mt-1">
                 Use your email as payment reference. Send proof to{" "}
-                <a href="mailto:billing@gettrackeet.com" className="text-primary">
-                  billing@gettrackeet.com
+                <a href="mailto:hello@gettrackeet.com" className="text-primary">
+                  hello@gettrackeet.com
                 </a>
               </p>
             </div> */}
@@ -451,7 +451,8 @@ export default function PricingPage() {
               Start free. Upgrade when ready.
             </h3>
             <p className="text-white/80 text-sm max-w-md mb-5">
-              Join 12,000+ Nigerian businesses already using Trackeet to get paid faster and look more professional.
+              Join 12,000+ Nigerian businesses already using Trackeet to get
+              paid faster and look more professional.
             </p>
             <Link
               to="/register"

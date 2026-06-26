@@ -37,7 +37,7 @@ const SECTIONS = [
       },
       {
         subtitle: "4.4 Refunds",
-        text: "We offer a 7-day money-back guarantee on all paid plans. Refund requests must be submitted to billing@gettrackeet.com within 7 days of payment. Refunds are processed within 3–5 business days.",
+        text: "We offer a 7-day money-back guarantee on all paid plans. Refund requests must be submitted to hello@gettrackeet.com within 7 days of payment. Refunds are processed within 3–5 business days.",
       },
       {
         subtitle: "4.5 Upgrades and Downgrades",
