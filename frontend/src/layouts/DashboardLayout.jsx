@@ -33,6 +33,7 @@ import {
   Truck,
   Mail,
   Gift,
+  Tag,
 } from "lucide-react";
 import useAuthStore from "../store/authStore.js";
 import useThemeStore from "../store/themeStore.js";
@@ -63,6 +64,7 @@ const NAV = [
   { to: "/dashboard/reviews", icon: Star, label: "Reviews" },
   { to: "/dashboard/banners", icon: Megaphone, label: "Banners" },
   { to: "/dashboard/newsletter", icon: Mail, label: "Newsletter" },
+  { to: "/dashboard/coupons", icon: Tag, label: "Coupons" },
 
   { type: "group", label: "Business" },
   { to: "/dashboard/reports", icon: BarChart3, label: "Reports" },
