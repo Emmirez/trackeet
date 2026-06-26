@@ -77,7 +77,7 @@ const TEAM = [
     role: "Head of Customer Success",
     emoji: "👩🏿‍🤝‍👩🏿",
     bg: "bg-danger",
-    photo: "/images/tega2.jpg",
+    photo: "/images/tega.jpg",
   },
 ];
 
@@ -303,7 +303,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Values */}
 
       {/* Values */}
       <section className="py-20 bg-gray-50 dark:bg-surface">
