@@ -156,7 +156,7 @@ export default function TicketsPage() {
         </div>
         <button
           onClick={() => setShowNew(true)}
-          className="btn btn-primary btn-sm"
+          className="btn btn-primary btn-sm flex-shrink-0"
         >
           <Plus size={16} /> New Ticket
         </button>
@@ -221,7 +221,7 @@ export default function TicketsPage() {
                 <button
                   type="submit"
                   disabled={creating}
-                  className="btn btn-primary flex-1"
+                  className="btn btn-primary flex-shrink-0"
                 >
                   {creating ? (
                     "Sending..."
