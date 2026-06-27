@@ -10,6 +10,7 @@ import {
   TrendingUp,
   ShoppingBag,
   Store,
+  Package,
 } from "lucide-react";
 
 export const FEATURES = [
@@ -72,6 +73,12 @@ export const FEATURES = [
     color: "bg-purple-100 text-purple-600",
     title: "Free Online Store",
     desc: "Every account gets a free storefront at gettrackeet.com/store/yourname. Add products with photos and customers order via WhatsApp instantly.",
+  },
+  {
+    icon: Package,
+    color: "bg-info-light text-info",
+    title: "Order Tracking",
+    desc: "Customers can track their orders in real time using a unique tracking link. No more 'where is my order?' messages on WhatsApp.",
   },
   {
     icon: ShoppingBag,
