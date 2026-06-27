@@ -40,7 +40,7 @@ export default function PricingSection() {
           {/* Lifestyle image banner */}
           <motion.div variants={fade} className="mb-8 relative rounded-3xl overflow-hidden h-48">
             <img
-              src="/images/whats.jpg"
+              src="/images/money.jpg"
               alt="Nigerian business owners"
               className="w-full h-full object-cover"
             />

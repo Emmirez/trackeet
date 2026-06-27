@@ -125,13 +125,13 @@ export default function ApiKeysPage() {
       <div className="section-header">
         <div>
           <h1 className="page-title">API Keys</h1>
-          <p className="text-dark-400 text-sm">
+          <p className="text-dark-500 text-sm">
             Connect your apps and systems to Trackeet
           </p>
         </div>
         <button
           onClick={() => setShowCreate(true)}
-          className="btn btn-primary btn-sm"
+          className="btn btn-primary btn-sm flex-shrink-0"
         >
           <Plus size={16} /> Generate Key
         </button>

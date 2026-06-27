@@ -77,7 +77,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="relative rounded-3xl overflow-hidden h-80">
             <img
-              src="/images/salon2.jpg"
+              src="/images/store2.jpg"
               alt="Nigerian business owners using Trackeet"
               className="w-full h-full object-cover"
             />

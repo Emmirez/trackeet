@@ -441,7 +441,7 @@ export default function PricingPage() {
       <div className="py-10 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
         <div className="max-w-7xl mx-auto relative rounded-3xl overflow-hidden h-64">
           <img
-            src="/images/sal.jpg"
+            src="/images/card.jpg"
             alt="Nigerian business owners"
             className="w-full h-full object-cover"
           />

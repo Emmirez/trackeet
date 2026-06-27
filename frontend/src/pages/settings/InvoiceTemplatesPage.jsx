@@ -115,7 +115,7 @@ export default function InvoiceTemplatesPage() {
         <button
           onClick={() => saveTemplate(selected)}
           disabled={isPending || selected === user?.invoiceTemplate}
-          className="btn btn-primary btn-sm"
+          className="btn btn-primary btn-sm flex-shrink-0"
         >
           {isPending ? "Saving..." : "Save Template"}
         </button>
