@@ -22,6 +22,7 @@ const ROTATING_TEXTS = [
   { line1: "Automate Your", line2: "WhatsApp.", color: "gradient-text" },
   { line1: "Launch Your", line2: "Online Store." },
   { line1: "Send Bulk", line2: "Messages.", color: "gradient-text" },
+  { line1: "Track Every", line2: "Order.", color: "gradient-text" },
   {
     line1: "Customer",
     line2: "Communication Platform.",

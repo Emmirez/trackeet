@@ -207,7 +207,7 @@ export default function FAQPage() {
       <div className="py-10 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
         <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden h-48">
           <img
-            src="/images/track.jpg"
+            src="/images/customer.jpg"
             alt="Trackeet support"
             className="w-full h-full object-cover"
           />
