@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Star, Send, MessageSquare, X, ChevronDown } from "lucide-react";
 import { feedbackAPI } from "../services/api.js";
@@ -21,15 +21,29 @@ const RATING_LABELS = {
   5: "🤩 Excellent",
 };
 
+const SHOW_AFTER_MS = 2 * 60 * 1000; // 2 minutes
+const COOLDOWN_DAYS = 7; // show again after 7 days
+
+const shouldShowFeedback = () => {
+  const lastSeen = localStorage.getItem("feedback-last-shown");
+  if (!lastSeen) return true;
+  const daysSince = (Date.now() - Number(lastSeen)) / (1000 * 60 * 60 * 24);
+  return daysSince >= COOLDOWN_DAYS;
+};
+
 export default function FeedbackWidget() {
   const [open, setOpen] = useState(false);
-  const [dismissed, setDismissed] = useState(
-    () => sessionStorage.getItem("feedback-dismissed") === "true",
-  );
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (!shouldShowFeedback()) return;
+    const timer = setTimeout(() => setVisible(true), SHOW_AFTER_MS);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleDismiss = () => {
-    setDismissed(true);
-    sessionStorage.setItem("feedback-dismissed", "true");
+    setVisible(false);
+    localStorage.setItem("feedback-last-shown", Date.now().toString());
   };
   const [rating, setRating] = useState(0);
   const [hovered, setHovered] = useState(0);
@@ -49,8 +63,10 @@ export default function FeedbackWidget() {
     onSuccess: () => {
       toast.success("Thank you for your feedback! 🙏");
       setOpen(false);
+      setVisible(false);
       setRating(0);
       setMessage("");
+      localStorage.setItem("feedback-last-shown", Date.now().toString());
       qc.invalidateQueries(["my-feedback"]);
     },
     onError: (err) =>
@@ -67,7 +83,7 @@ export default function FeedbackWidget() {
   return (
     <>
       {/* Floating button */}
-      {!dismissed && (
+      {visible && (
         <div className="fixed bottom-24 right-4 lg:bottom-6 z-30 flex items-center gap-1">
           <button
             onClick={() => setOpen(true)}
