@@ -106,8 +106,12 @@ const schema = yup.object({
   businessName: yup.string().required("Business name required"),
   email: yup.string().email("Invalid email").required(),
   phone: yup.string().required("Phone required"),
-  password: yup.string().min(6, "Password must be at least 6 characters").required(),
-  confirmPassword: yup.string()
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .required(),
+  confirmPassword: yup
+    .string()
     .oneOf([yup.ref("password")], "Passwords do not match")
     .required("Please confirm your password"),
 });
@@ -126,6 +130,7 @@ export default function RegisterPage() {
   const refCode = searchParams.get("ref") || "";
 
   const [referralCode, setReferralCode] = useState(refCode);
+  const [showReferralInput, setShowReferralInput] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -163,7 +168,7 @@ export default function RegisterPage() {
       const res = await authAPI.register({
         ...data,
         businessCategory: selectedCategory,
-        ref: refCode || undefined,
+        ref: refCode || referralCode || undefined,
       });
       const { token, user } = res.data;
 
@@ -344,8 +349,8 @@ export default function RegisterPage() {
             </div>
           ) : (
             <div className="card">
-              {/* Referral code banner */}
-              {refCode && (
+              {/* Referral code */}
+              {refCode ? (
                 <div className="flex items-center gap-2 mb-4 p-3 bg-success-light rounded-xl border border-success/20">
                   <span className="text-lg">🎁</span>
                   <div>
@@ -356,6 +361,44 @@ export default function RegisterPage() {
                       You'll get 1 free month when you upgrade to any paid plan
                     </p>
                   </div>
+                </div>
+              ) : (
+                <div className="mb-4">
+                  {!showReferralInput ? (
+                    <button
+                      type="button"
+                      onClick={() => setShowReferralInput(true)}
+                      className="text-xs text-primary font-semibold hover:underline flex items-center gap-1"
+                    >
+                      🎁 Have a referral code?
+                    </button>
+                  ) : (
+                    <div className="flex gap-2 items-center">
+                      <input
+                        value={referralCode}
+                        onChange={(e) =>
+                          setReferralCode(e.target.value.toUpperCase())
+                        }
+                        placeholder="Enter referral code"
+                        className="input flex-1 font-mono font-bold text-sm"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowReferralInput(false);
+                          setReferralCode("");
+                        }}
+                        className="text-xs text-dark-400 hover:text-danger"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  )}
+                  {referralCode && (
+                    <p className="text-xs text-success font-semibold mt-1">
+                      🎁 You'll get 1 free month when you upgrade!
+                    </p>
+                  )}
                 </div>
               )}
               {/* Selected category badge */}
@@ -492,7 +535,9 @@ export default function RegisterPage() {
                     />
                   </div>
                   {errors.confirmPassword && (
-                    <p className="input-error">{errors.confirmPassword.message}</p>
+                    <p className="input-error">
+                      {errors.confirmPassword.message}
+                    </p>
                   )}
                 </div>
 
