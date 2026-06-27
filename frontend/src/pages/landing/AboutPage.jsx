@@ -287,7 +287,7 @@ export default function AboutPage() {
       <div className="py-10 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
         <div className="max-w-7xl mx-auto relative rounded-3xl overflow-hidden h-56">
           <img
-            src="/images/paid.jpg"
+            src="/images/sign.jpg"
             alt="Nigerian businesses"
             className="w-full h-full object-cover"
           />

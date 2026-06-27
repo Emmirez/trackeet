@@ -258,7 +258,7 @@ export default function FeaturesPage() {
       <div className="py-10 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark">
         <div className="max-w-7xl mx-auto relative rounded-3xl overflow-hidden h-64">
           <img
-            src="/images/money.jpg"
+            src="/images/sign.jpg"
             alt="Business owners"
             className="w-full h-full object-cover"
           />
