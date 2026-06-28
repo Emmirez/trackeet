@@ -482,9 +482,11 @@ export default function SubscriptionPage() {
             Bank Transfer Instructions
           </p>
           <p className="text-xs text-dark-400">
-            Transfer to: <strong>Trackeet Technologies</strong> ·{" "}
-            {process.env.BANK_NAME || "Your Bank"} · Contact us for account
-            details.
+            Transfer to: <strong>Trackeet Technologies</strong> · Contact us at{" "}
+            <a href="mailto:hello@gettrackeet.com" className="text-primary">
+              hello@gettrackeet.com
+            </a>{" "}
+            for account details.
           </p>
           <p className="text-xs text-dark-400 mt-1">
             Use your email as payment reference. Send proof to{" "}
