@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useSearchParams } from "react-router-dom";
 import {
   Crown,
   CheckCircle,
@@ -90,6 +91,35 @@ export default function SubscriptionPage() {
   const [promoCode, setPromoCode] = useState("");
   const [appliedPromo, setAppliedPromo] = useState(null);
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const qc = useQueryClient();
+  const [verifying, setVerifying] = useState(false);
+  const [verified, setVerified] = useState(false);
+
+  useEffect(() => {
+    const shouldVerify = searchParams.get("verify") === "1";
+    const reference =
+      searchParams.get("reference") || localStorage.getItem("paystack_ref");
+
+    if (shouldVerify && reference && !verifying && !verified) {
+      setVerifying(true);
+      subscriptionAPI
+        .verify({ reference })
+        .then(() => {
+          setVerified(true);
+          toast.success("🎉 Payment successful! Your plan has been upgraded.");
+          qc.invalidateQueries(["subscription"]);
+          // Update user plan in auth store
+          useAuthStore.getState().initAuth();
+          localStorage.removeItem("paystack_ref");
+          setSearchParams({});
+        })
+        .catch(() => {
+          toast.error("Payment verification failed. Contact support.");
+        })
+        .finally(() => setVerifying(false));
+    }
+  }, []);
   const { data: current } = useQuery({
     queryKey: ["subscription"],
     queryFn: () => subscriptionAPI.getCurrent().then((r) => r.data),
@@ -98,7 +128,10 @@ export default function SubscriptionPage() {
   const { mutate: initiate, isPending } = useMutation({
     mutationFn: subscriptionAPI.initiate,
     onSuccess: (res) => {
-      if (res.data.paymentUrl) window.location.href = res.data.paymentUrl;
+      if (res.data.paymentUrl) {
+        localStorage.setItem("paystack_ref", res.data.reference);
+        window.location.href = res.data.paymentUrl;
+      }
     },
     onError: () => toast.error("Failed to initiate payment"),
   });
@@ -156,6 +189,24 @@ export default function SubscriptionPage() {
           </button>
         </div>
       </div>
+
+      {verifying && (
+        <div className="card bg-primary-light border border-primary/20 flex items-center gap-3">
+          <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin flex-shrink-0" />
+          <p className="text-sm font-semibold text-primary">
+            Verifying your payment... please wait
+          </p>
+        </div>
+      )}
+
+      {verified && (
+        <div className="card bg-success-light border border-success/20 flex items-center gap-3">
+          <CheckCircle size={20} className="text-success flex-shrink-0" />
+          <p className="text-sm font-semibold text-success">
+            🎉 Payment verified! Your plan has been upgraded successfully.
+          </p>
+        </div>
+      )}
 
       {current?.subscription && (
         <div className="card bg-gradient-to-r from-primary to-purple-700 text-white">
@@ -431,8 +482,9 @@ export default function SubscriptionPage() {
             Bank Transfer Instructions
           </p>
           <p className="text-xs text-dark-400">
-            Transfer to: <strong>Trackeet Technologies Ltd</strong> · GTBank ·
-            0123456789
+            Transfer to: <strong>Trackeet Technologies</strong> ·{" "}
+            {process.env.BANK_NAME || "Your Bank"} · Contact us for account
+            details.
           </p>
           <p className="text-xs text-dark-400 mt-1">
             Use your email as payment reference. Send proof to{" "}
