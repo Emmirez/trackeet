@@ -11,7 +11,7 @@ import {
   X,
   Loader,
 } from "lucide-react";
-import { subscriptionAPI, promoAPI } from "../../services/api.js";
+import api,{ subscriptionAPI, promoAPI } from "../../services/api.js";
 import useAuthStore from "../../store/authStore.js";
 import { fmt } from "../../utils/helpers.js";
 import toast from "react-hot-toast";
@@ -109,8 +109,10 @@ export default function SubscriptionPage() {
           setVerified(true);
           toast.success("🎉 Payment successful! Your plan has been upgraded.");
           qc.invalidateQueries(["subscription"]);
-          // Update user plan in auth store
-          useAuthStore.getState().initAuth();
+          // Refresh user data from server
+          api.get("/auth/me").then((res) => {
+            useAuthStore.getState().setUser(res.data.user);
+          });
           localStorage.removeItem("paystack_ref");
           setSearchParams({});
         })
