@@ -51,13 +51,6 @@ const useAuthStore = create(
 
       updateUser: (updates) => set({ user: { ...get().user, ...updates } }),
 
-      refreshUser: async () => {
-        try {
-          const res = await api.get("/auth/me");
-          set({ user: res.data.user });
-        } catch {}
-      },
-
       initAuth: () => {
         const { token } = get();
         if (token)

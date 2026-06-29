@@ -168,6 +168,15 @@ export const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findByIdAndUpdate(req.params.id, updates, {
     new: true,
   });
+
+  // Notify user if plan was changed
+  if (updates.plan) {
+    try {
+      const { emitToUser } = await import("../config/socket.js");
+      emitToUser(req.params.id, "plan_upgraded", { plan: updates.plan });
+    } catch {}
+  }
+
   res.json({ success: true, user });
 });
 
@@ -572,6 +581,7 @@ export const verifyPayment = asyncHandler(async (req, res) => {
   try {
     const { emitToUser } = await import("../config/socket.js");
     emitToUser(sub.user._id.toString(), "notification", notif);
+    emitToUser(sub.user._id.toString(), "plan_upgraded", { plan: sub.plan });
   } catch {}
 
   res.json({ success: true, subscription: sub });

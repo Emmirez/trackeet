@@ -54,6 +54,15 @@ export const initSocket = () => {
   });
 
   return socket;
+
+  // Plan upgraded event
+  socket.on("plan_upgraded", (data) => {
+    window.dispatchEvent(
+      new CustomEvent("trackeet:plan_upgraded", { detail: data }),
+    );
+  });
+
+  return socket;
 };
 
 export const getSocket = () => socket;
