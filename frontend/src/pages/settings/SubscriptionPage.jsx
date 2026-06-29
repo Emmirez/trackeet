@@ -109,10 +109,8 @@ export default function SubscriptionPage() {
           setVerified(true);
           toast.success("🎉 Payment successful! Your plan has been upgraded.");
           qc.invalidateQueries(["subscription"]);
-          // Refresh user data from server
-          api.get("/auth/me").then((res) => {
-            useAuthStore.getState().setUser(res.data.user);
-          });
+         // Refresh user data from server
+          useAuthStore.getState().refreshUser();
           localStorage.removeItem("paystack_ref");
           setSearchParams({});
         })

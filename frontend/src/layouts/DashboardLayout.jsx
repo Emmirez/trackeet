@@ -98,7 +98,7 @@ const BOTTOM_NAV = [
 ];
 
 export default function DashboardLayout() {
-  const { user, logout } = useAuthStore();
+  const { user, logout, refreshUser} = useAuthStore();
   const { isDark, toggle } = useThemeStore();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -106,6 +106,14 @@ export default function DashboardLayout() {
   const location = useLocation();
   const dropdownRef = useRef(null);
   const [openDropdown, setOpenDropdown] = useState(null);
+
+  // Refresh user plan every 5 minutes in case admin upgraded
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refreshUser();
+    }, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const { data: notifs, refetch: refetchNotifs } = useQuery({
     queryKey: ["notifications"],
