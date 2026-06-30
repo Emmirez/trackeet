@@ -88,8 +88,6 @@ import InstallAppBanner from "./components/InstallAppBanner.jsx";
 import CookieConsent from "./components/CookieConsent.jsx";
 import StoreCouponsPage from "./pages/coupons/StoreCouponsPage.jsx";
 
-
-
 import ErrorPage from "./pages/ErrorPage.jsx";
 
 const Guard = ({ children, roles }) => {
@@ -125,7 +123,9 @@ export default function App() {
   const [maintenance, setMaintenance] = useState(false);
   const [checking, setChecking] = useState(true);
 
-  initAuth();
+  useEffect(() => {
+    initAuth();
+  }, []);
 
   useEffect(() => {
     init(isDark);
