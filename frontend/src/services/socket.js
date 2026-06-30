@@ -14,16 +14,16 @@ export const initSocket = () => {
     socket = null;
   }
 
-  socket = io(
-    import.meta.env.VITE_API_URL?.replace("/api", "") ||
-      "http://localhost:5000",
-    {
-      query: { userId: user._id },
-      transports: ["websocket"],
-      reconnection: true,
-      reconnectionDelay: 2000,
-    },
-  );
+  const socketUrl = import.meta.env.VITE_API_URL
+    ? import.meta.env.VITE_API_URL.replace("/api", "")
+    : "http://localhost:5000";
+
+  socket = io(socketUrl, {
+    query: { userId: user._id },
+    transports: ["websocket"],
+    reconnection: true,
+    reconnectionDelay: 2000,
+  });
 
   socket.on("connect", () => {});
 
