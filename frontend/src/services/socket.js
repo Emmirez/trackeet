@@ -18,6 +18,9 @@ export const initSocket = () => {
     ? import.meta.env.VITE_API_URL.replace("/api", "")
     : "http://localhost:5000";
 
+  console.log("VITE_API_URL raw:", import.meta.env.VITE_API_URL);
+  console.log("Socket URL after replace:", socketUrl);
+
   socket = io(socketUrl, {
     query: { userId: user._id },
     transports: ["websocket"],
