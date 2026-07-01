@@ -941,8 +941,11 @@ export default function ProductsPage() {
   ];
   const productLimit =
     user?.plan === "free" ? 10 : user?.plan === "starter" ? 50 : Infinity;
-  const isAtLimit = products.length >= productLimit;
-  const isNearLimit = products.length >= productLimit - 2;
+  const isAtLimit =
+    productLimit !== Infinity && products.length >= productLimit;
+  const isNearLimit =
+    productLimit !== Infinity && products.length >= productLimit - 2;
+  const isOverLimit = user?.plan === "free" && products.length > productLimit;
   const storeUrl = `${window.location.origin}/store/${storeName}`;
 
   const mostViewed = [...products]
@@ -1019,22 +1022,28 @@ export default function ProductsPage() {
       )}
 
       {/* Plan limit banner */}
-      {user?.plan === "free" && isNearLimit && (
+      {user?.plan === "free" && (isNearLimit || isOverLimit) && (
         <div
-          className={`card border ${isAtLimit ? "border-danger/30 bg-danger-light/20" : "border-warning/30 bg-warning-light/20"}`}
+          className={`card border ${isAtLimit || isOverLimit ? "border-danger/30 bg-danger-light/20" : "border-warning/30 bg-warning-light/20"}`}
         >
           <div className="flex items-center gap-3">
-            <span className="text-2xl">{isAtLimit ? "🚫" : "⚠️"}</span>
+            <span className="text-2xl">
+              {isAtLimit || isOverLimit ? "🚫" : "⚠️"}
+            </span>
             <div className="flex-1">
               <p
-                className={`text-sm font-bold ${isAtLimit ? "text-danger" : "text-warning"}`}
+                className={`text-sm font-bold ${isAtLimit || isOverLimit ? "text-danger" : "text-warning"}`}
               >
-                {isAtLimit
-                  ? `You've reached the ${productLimit} product limit`
-                  : `${productLimit - products.length} product slot${productLimit - products.length === 1 ? "" : "s"} remaining`}
+                {isOverLimit
+                  ? `Your plan expired — you have ${products.length} products but free plan allows ${productLimit}`
+                  : isAtLimit
+                    ? `You've reached the ${productLimit} product limit`
+                    : `${productLimit - products.length} product slot${productLimit - products.length === 1 ? "" : "s"} remaining`}
               </p>
               <p className="text-xs text-dark-400 mt-0.5">
-                Upgrade to Starter for 50 products or Business for unlimited
+                {isOverLimit
+                  ? "Your existing products are safe. Upgrade to add more or manage your products."
+                  : "Upgrade to Starter for 50 products or Business for unlimited"}
               </p>
             </div>
 
