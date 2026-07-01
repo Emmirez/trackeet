@@ -939,6 +939,10 @@ export default function ProductsPage() {
       (allData?.products || []).map((p) => p.category).filter(Boolean),
     ),
   ];
+  const productLimit =
+    user?.plan === "free" ? 10 : user?.plan === "starter" ? 50 : Infinity;
+  const isAtLimit = products.length >= productLimit;
+  const isNearLimit = products.length >= productLimit - 2;
   const storeUrl = `${window.location.origin}/store/${storeName}`;
 
   const mostViewed = [...products]
@@ -960,8 +964,14 @@ export default function ProductsPage() {
           <p className="text-xs text-dark-400">Manage your store catalogue</p>
         </div>
         <button
-          onClick={() => setShowAdd(true)}
-          className="btn btn-primary btn-sm"
+          onClick={() => {
+            if (isAtLimit && user?.plan === "free") {
+              toast.error(`Upgrade to add more than ${productLimit} products`);
+              return;
+            }
+            setShowAdd(true);
+          }}
+          className={`btn btn-sm ${isAtLimit && user?.plan === "free" ? "btn-secondary opacity-60" : "btn-primary"}`}
         >
           <Plus size={16} /> Add {config.productLabel}
         </button>
@@ -1003,6 +1013,36 @@ export default function ProductsPage() {
               className="btn btn-primary btn-sm flex-1 justify-center"
             >
               <ExternalLink size={14} /> View Store
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* Plan limit banner */}
+      {user?.plan === "free" && isNearLimit && (
+        <div
+          className={`card border ${isAtLimit ? "border-danger/30 bg-danger-light/20" : "border-warning/30 bg-warning-light/20"}`}
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">{isAtLimit ? "🚫" : "⚠️"}</span>
+            <div className="flex-1">
+              <p
+                className={`text-sm font-bold ${isAtLimit ? "text-danger" : "text-warning"}`}
+              >
+                {isAtLimit
+                  ? `You've reached the ${productLimit} product limit`
+                  : `${productLimit - products.length} product slot${productLimit - products.length === 1 ? "" : "s"} remaining`}
+              </p>
+              <p className="text-xs text-dark-400 mt-0.5">
+                Upgrade to Starter for 50 products or Business for unlimited
+              </p>
+            </div>
+
+            <a
+              href="/dashboard/subscription"
+              className="btn btn-primary btn-sm flex-shrink-0"
+            >
+              Upgrade
             </a>
           </div>
         </div>
