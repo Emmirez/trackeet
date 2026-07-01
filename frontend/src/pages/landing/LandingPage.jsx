@@ -114,7 +114,7 @@ export default function LandingPage() {
       {/* Floating WhatsApp button */}
 
       <a
-        href="https://wa.me/2348064018967?text=Hi!%20I%20have%20a%20question%20about%20Trackeet"
+        href="https://wa.me/2349160431735?text=Hi!%20I%20have%20a%20question%20about%20Trackeet"
         target="_blank"
         rel="noreferrer"
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-full shadow-2xl hover:bg-[#20BA5A] transition-all hover:scale-105 group"
