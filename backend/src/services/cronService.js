@@ -5,6 +5,8 @@ import WhatsAppSettings from "../models/WhatsAppSettings.js";
 import { sendWhatsAppMessage } from "./whatsappService.js";
 import dayjs from "dayjs";
 import { processRecurringInvoices } from "../controllers/recurringController.js";
+import Subscription from "../models/Subscription.js";
+
 
 const markOverdue = async () => {
   const result = await Invoice.updateMany(
@@ -207,5 +209,92 @@ export const initCrons = () => {
       }
     }
   });
+  // Check expired subscriptions — every day at midnight
+  cron.schedule("0 0 * * *", async () => {
+    console.log("Checking expired subscriptions...");
+    try {
+      const expiredSubs = await Subscription.find({
+        status: "active",
+        endDate: { $lt: new Date() },
+      });
+
+      for (const sub of expiredSubs) {
+        // Mark subscription as expired
+        sub.status = "expired";
+        await sub.save();
+
+        // Downgrade user to free plan
+        await User.findByIdAndUpdate(sub.user, { plan: "free" });
+
+        // Notify user
+        const { emitToUser } = await import("../config/socket.js");
+        const Notification = (await import("../models/Notification.js"))
+          .default;
+
+        const notif = await Notification.create({
+          user: sub.user,
+          type: "subscription",
+          title: "⚠️ Subscription Expired",
+          message: `Your ${sub.plan} plan has expired. Upgrade to continue enjoying premium features.`,
+          link: "/dashboard/subscription",
+        });
+
+        try {
+          emitToUser(sub.user.toString(), "notification", notif);
+          emitToUser(sub.user.toString(), "plan_upgraded", { plan: "free" });
+        } catch {}
+
+        // Send email notification
+        try {
+          const user = await User.findById(sub.user).select("email firstName");
+          const { sendEmail } = await import("../services/emailService.js");
+          await sendEmail({
+            to: user.email,
+            subject: "Your Trackeet subscription has expired",
+            html: `
+              <div style="font-family:sans-serif;max-width:560px;margin:0 auto;">
+                <div style="background:linear-gradient(135deg,#7C3AED,#6366F1);padding:32px;border-radius:16px 16px 0 0;text-align:center;">
+                  <h1 style="color:#fff;margin:0;font-size:24px;">TRACKEET</h1>
+                </div>
+                <div style="background:#fff;padding:32px;border-radius:0 0 16px 16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+                  <h2 style="color:#0f172a;margin:0 0 8px;">Your subscription has expired ⚠️</h2>
+                  <p style="color:#64748b;line-height:1.6;">
+                    Hi <strong>${user.firstName}</strong>, your <strong>${sub.plan}</strong> plan has expired.
+                    Your account has been moved to the Free plan.
+                  </p>
+                  <p style="color:#64748b;line-height:1.6;">
+                    You can still access your data, but some features are now limited.
+                    Renew your subscription to restore full access.
+                  </p>
+                  <div style="text-align:center;margin:28px 0;">
+                    <a href="https://gettrackeet.com/dashboard/subscription"
+                       style="background:#7C3AED;color:#fff;text-decoration:none;padding:14px 32px;border-radius:12px;font-size:16px;font-weight:700;display:inline-block;">
+                      Renew Subscription →
+                    </a>
+                  </div>
+                </div>
+                <p style="text-align:center;color:#94a3b8;font-size:11px;margin-top:16px;">
+                  © 2026 Trackeet · gettrackeet.com
+                </p>
+              </div>
+            `,
+          });
+        } catch {}
+
+        console.log(
+          `✅ Subscription expired for user ${sub.user} — downgraded to free`,
+        );
+      }
+
+      if (expiredSubs.length > 0) {
+        console.log(
+          `✅ Processed ${expiredSubs.length} expired subscription(s)`,
+        );
+      }
+    } catch (err) {
+      console.error("Subscription expiry check failed:", err.message);
+    }
+  });
+
   console.log("✅ Cron jobs started");
 };
