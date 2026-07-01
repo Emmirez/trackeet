@@ -8,8 +8,8 @@ import Referral from "../models/Referral.js";
 import crypto from "crypto";
 
 const PLANS = {
-  starter: { monthly: 100, annual: 19200 },
-  business: { monthly: 100, annual: 48000 },
+  starter: { monthly: 2000, annual: 19200 },
+  business: { monthly: 5000, annual: 48000 },
   enterprise: { monthly: 15000, annual: 144000 },
 };
 
