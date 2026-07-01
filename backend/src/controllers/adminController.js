@@ -173,8 +173,12 @@ export const updateUser = asyncHandler(async (req, res) => {
   if (updates.plan) {
     try {
       const { emitToUser } = await import("../config/socket.js");
+      console.log(`Emitting plan_upgraded to user ${req.params.id} — plan: ${updates.plan}`);
       emitToUser(req.params.id, "plan_upgraded", { plan: updates.plan });
-    } catch {}
+      console.log(`plan_upgraded emitted successfully`);
+    } catch (e) {
+      console.error("Failed to emit plan_upgraded:", e.message);
+    }
   }
 
   res.json({ success: true, user });
