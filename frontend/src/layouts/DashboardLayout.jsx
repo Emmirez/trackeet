@@ -98,7 +98,7 @@ const BOTTOM_NAV = [
 ];
 
 export default function DashboardLayout() {
-  const { user, logout } = useAuthStore();
+  const { user, logout, refreshUser } = useAuthStore();
   const { isDark, toggle } = useThemeStore();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
