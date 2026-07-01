@@ -125,7 +125,7 @@ export default function DashboardLayout() {
   // Listen for plan upgrade event
   useEffect(() => {
     const handlePlanUpgrade = (e) => {
-      console.log("Plan upgraded event received:", e.detail);
+      
       refreshUser();
     };
     window.addEventListener("trackeet:plan_upgraded", handlePlanUpgrade);
