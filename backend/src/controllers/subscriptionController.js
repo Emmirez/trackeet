@@ -113,7 +113,7 @@ export const initiateSubscription = asyncHandler(async (req, res) => {
       email: req.user.email,
       amount: amount * 100,
       metadata: { userId: req.user._id, planId, annual: annual || false },
-      callback_url: `${process.env.FRONTEND_URL}/dashboard/subscription?verify=1`,
+      callback_url: `${process.env.FRONTEND_URL.split(",")[0].trim()}/dashboard/subscription?verify=1`,
     },
     { headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}` } },
   );
